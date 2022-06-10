@@ -42,7 +42,8 @@ class BackofficeNavigator extends CommonNavigator {
             Guard.checkIsUser,
           ],
           builder: (context) {
-            return const App(accessToken: '', appName: '',);
+            // TODO : Set accessToken
+            return  App(accessToken: '', appName: params["appName"]!,);
           },
         )
   };
