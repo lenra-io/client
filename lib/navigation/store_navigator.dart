@@ -11,9 +11,10 @@ import 'package:flutter/widgets.dart';
 import 'package:lenra_ui_runner/widget_model.dart';
 import 'package:provider/provider.dart';
 
-class BackofficeNavigator extends CommonNavigator {
+class StoreNavigator extends CommonNavigator {
   static const String homeRoute = "/";
   static const String appRoute = "/app/:appName";
+  static String buildAppRoute(String appName) => "/app/$appName";
   static String? currentRoute;
   static final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
@@ -83,7 +84,7 @@ class BackofficeNavigator extends CommonNavigator {
 
   static Route<dynamic> handleGenerateRoute(RouteSettings settings) {
     debugPrint("route: ${settings.name}");
-    BackofficeNavigator.currentRoute = settings.name;
+    StoreNavigator.currentRoute = settings.name;
     if (settings.name == null) return Page404.pageRoutebuilder(settings);
     Widget? page = _getFirstMatchingPage(settings.name!);
     if (page == null) return Page404.pageRoutebuilder(settings);
