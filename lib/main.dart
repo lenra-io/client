@@ -1,8 +1,10 @@
-import 'package:client_app/app.dart';
+import 'package:client_store/navigation/store_navigator.dart';
 import 'package:flutter/material.dart';
+import 'package:lenra_components/theme/lenra_theme.dart';
+import 'package:lenra_components/theme/lenra_theme_data.dart';
 
 void main() {
-  runApp(const App(accessToken: accessToken, appName: appName));
+  runApp(const Store());
 }
 
 class Store extends StatelessWidget {
@@ -10,7 +12,19 @@ class Store extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    var themeData = LenraThemeData();
+    return LenraTheme(
+      themeData: themeData,
+      child: MaterialApp(
+        title: 'Lenra',
+        navigatorKey: StoreNavigator.navigatorKey,
+        onGenerateInitialRoutes: (initialRoute) =>
+            [StoreNavigator.handleGenerateRoute(RouteSettings(name: initialRoute))],
+        onGenerateRoute: StoreNavigator.handleGenerateRoute,
+        theme: ThemeData(
+          textTheme: TextTheme(bodyText2: themeData.lenraTextThemeData.bodyText),
+        ),
+      ),
+    );
   }
-
 }
