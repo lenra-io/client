@@ -26,38 +26,39 @@ class Store extends StatelessWidget {
   Widget build(BuildContext context) {
     var themeData = LenraThemeData();
     return MultiProvider(
-        providers: [
-          ChangeNotifierProvider<AuthModel>(create: (context) => AuthModel()),
-          ChangeNotifierProvider<BuildModel>(create: (context) => BuildModel()),
-          ChangeNotifierProvider<UserApplicationModel>(create: (context) => UserApplicationModel()),
-          ChangeNotifierProvider<StoreModel>(create: (context) => StoreModel()),
-          ChangeNotifierProvider<CguModel>(create: (context) => CguModel()),
-          ChangeNotifierProxyProvider2<UserApplicationModel, AuthModel, LenraApplicationModel>(
-              create: (context) => LenraApplicationModel(
-                    Config.instance.httpEndpoint,
-                    context.read<UserApplicationModel>().currentApp ?? "",
-                    context.read<AuthModel>().accessToken ?? "",
-                  ),
-              update: (_, userApplicationModel, authModel, applicationModel) {
-                return LenraApplicationModel(
+      providers: [
+        ChangeNotifierProvider<AuthModel>(create: (context) => AuthModel()),
+        ChangeNotifierProvider<BuildModel>(create: (context) => BuildModel()),
+        ChangeNotifierProvider<UserApplicationModel>(create: (context) => UserApplicationModel()),
+        ChangeNotifierProvider<StoreModel>(create: (context) => StoreModel()),
+        ChangeNotifierProvider<CguModel>(create: (context) => CguModel()),
+        ChangeNotifierProxyProvider2<UserApplicationModel, AuthModel, LenraApplicationModel>(
+            create: (context) => LenraApplicationModel(
                   Config.instance.httpEndpoint,
-                  userApplicationModel.currentApp ?? "",
-                  authModel.accessToken ?? "",
-                );
-              }),
-        ],
-        builder: (BuildContext context, _) => LenraTheme(
-              themeData: themeData,
-              child: MaterialApp(
-                title: 'Lenra',
-                navigatorKey: StoreNavigator.navigatorKey,
-                onGenerateInitialRoutes: (initialRoute) =>
-                    [StoreNavigator.handleGenerateRoute(RouteSettings(name: initialRoute))],
-                onGenerateRoute: StoreNavigator.handleGenerateRoute,
-                theme: ThemeData(
-                  textTheme: TextTheme(bodyText2: themeData.lenraTextThemeData.bodyText),
+                  context.read<UserApplicationModel>().currentApp ?? "",
+                  context.read<AuthModel>().accessToken ?? "",
                 ),
-              ),
-            ));
+            update: (_, userApplicationModel, authModel, applicationModel) {
+              return LenraApplicationModel(
+                Config.instance.httpEndpoint,
+                userApplicationModel.currentApp ?? "",
+                authModel.accessToken ?? "",
+              );
+            }),
+      ],
+      builder: (BuildContext context, _) => LenraTheme(
+        themeData: themeData,
+        child: MaterialApp(
+          title: 'Lenra',
+          navigatorKey: StoreNavigator.navigatorKey,
+          onGenerateInitialRoutes: (initialRoute) =>
+              [StoreNavigator.handleGenerateRoute(RouteSettings(name: initialRoute))],
+          onGenerateRoute: StoreNavigator.handleGenerateRoute,
+          theme: ThemeData(
+            textTheme: TextTheme(bodyText2: themeData.lenraTextThemeData.bodyText),
+          ),
+        ),
+      ),
+    );
   }
 }
