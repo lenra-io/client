@@ -9,7 +9,7 @@ The Lenra Client Store in Flutter.
 
 Run flutter app with chrome
 ```sh
-flutter run -d chrome --dart-define=LENRA_SERVER_URL=http://localhost:4000
+flutter run -d chrome --web-port 10000 --dart-define=LENRA_SERVER_URL=http://localhost:4000
 ```
 
 Run flutter test
