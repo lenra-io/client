@@ -1,6 +1,4 @@
 import 'package:client_app/app.dart';
-import 'package:client_app/models/channel_model.dart';
-import 'package:client_app/models/client_widget_model.dart';
 import 'package:client_common/models/auth_model.dart';
 import 'package:client_common/models/user_application_model.dart';
 import 'package:client_common/navigator/common_navigator.dart';
@@ -9,7 +7,6 @@ import 'package:client_common/navigator/page_guard.dart';
 import 'package:client_common/views/page_404.dart';
 import 'package:client_store/views/home_page.dart';
 import 'package:flutter/widgets.dart';
-import 'package:lenra_ui_runner/widget_model.dart';
 import 'package:provider/provider.dart';
 
 class StoreNavigator extends CommonNavigator {
@@ -35,8 +32,6 @@ class StoreNavigator extends CommonNavigator {
     appRoute: (Map<String, String> params) => PageGuard(
           onInit: (context) {
             context.read<UserApplicationModel>().currentApp = params["appName"];
-            context.read<ChannelModel>().createChannel(params["appName"]!);
-            (context.read<WidgetModel>() as ClientWidgetModel).setupListeners();
           },
           guards: [
             Guard.checkAuthenticated,
