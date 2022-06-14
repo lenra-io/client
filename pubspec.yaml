@@ -14,7 +14,7 @@ dependencies:
   client_app:
     git:
       url: git@github.com:lenra-io/client-app.git
-      ref: v1.0.0-beta.2
+      ref: v1.0.0-beta.3
   client_common:
     git:
       url: git@github.com:lenra-io/client-common.git
