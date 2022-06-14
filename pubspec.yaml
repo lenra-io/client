@@ -1,13 +1,9 @@
 name: client_store
 description: A new Flutter project.
-
 publish_to: "none"
-
 version: 1.0.0+1
-
 environment:
   sdk: ">=2.17.1 <3.0.0"
-
 dependencies:
   flutter:
     sdk: flutter
@@ -18,11 +14,11 @@ dependencies:
   client_app:
     git:
       url: git@github.com:lenra-io/client-app.git
-      ref: v1.0.0-beta.2
+      ref: v1.0.0-beta.3
   client_common:
     git:
       url: git@github.com:lenra-io/client-common.git
-      ref: v1.0.0-beta.1
+      ref: v1.0.0-beta.2
   lenra_ui_runner:
     git:
       url: git@github.com:lenra-io/lenra_ui_runner.git
@@ -31,12 +27,10 @@ dependencies:
     git:
       url: git@github.com:lenra-io/lenra_components.git
       ref: v1.0.0-beta.45
-
 dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
-
 flutter:
   uses-material-design: true
   assets:
