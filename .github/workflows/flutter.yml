@@ -43,6 +43,7 @@ jobs:
             ${{ secrets.CLIENT_COMMON_SSH }}
             ${{ secrets.LENRA_COMPONENTS_SSH }}
             ${{ secrets.LENRA_UI_RUNNER_SSH }}
+            ${{ secrets.CLIENT_APP_SSH }}
       - name: Restore packages
         run: flutter pub get
 
