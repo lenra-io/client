@@ -1,5 +1,4 @@
 import 'package:client_app/app.dart';
-import 'package:client_common/models/auth_model.dart';
 import 'package:client_common/models/user_application_model.dart';
 import 'package:client_common/navigator/common_navigator.dart';
 import 'package:client_common/navigator/guard.dart';
@@ -40,7 +39,6 @@ class StoreNavigator extends CommonNavigator {
           ],
           builder: (context) {
             return App(
-              accessToken: context.read<AuthModel>().accessToken ?? "",
               appName: params["appName"]!,
             );
           },
