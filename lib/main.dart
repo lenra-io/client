@@ -1,3 +1,5 @@
+import 'package:client_app/models/app_socket_model.dart';
+import 'package:client_app/models/socket_model.dart';
 import 'package:client_common/config/config.dart';
 import 'package:client_common/models/auth_model.dart';
 import 'package:client_common/models/build_model.dart';
@@ -54,6 +56,17 @@ class Store extends StatelessWidget {
         ChangeNotifierProvider<UserApplicationModel>(create: (context) => UserApplicationModel()),
         ChangeNotifierProvider<StoreModel>(create: (context) => StoreModel()),
         ChangeNotifierProvider<CguModel>(create: (context) => CguModel()),
+        ChangeNotifierProxyProvider<AuthModel, SocketModel>(
+          create: (context) => AppSocketModel(context.read<AuthModel>().accessToken ?? ""),
+          update: (_, authModel, socketModel) {
+            if (socketModel == null) {
+              return AppSocketModel(authModel.accessToken ?? "");
+            }
+
+            (socketModel as AppSocketModel).update(authModel.accessToken ?? "");
+            return socketModel;
+          },
+        ),
         ChangeNotifierProxyProvider2<UserApplicationModel, AuthModel, LenraApplicationModel>(
             create: (context) => LenraApplicationModel(
                   Config.instance.httpEndpoint,
