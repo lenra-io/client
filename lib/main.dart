@@ -5,12 +5,10 @@ import 'package:client_common/models/auth_model.dart';
 import 'package:client_common/models/build_model.dart';
 import 'package:client_common/models/cgu_model.dart';
 import 'package:client_common/models/store_model.dart';
-import 'package:client_common/models/user_application_model.dart';
 import 'package:client_store/navigation/store_navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:lenra_components/theme/lenra_theme.dart';
 import 'package:lenra_components/theme/lenra_theme_data.dart';
-import 'package:lenra_ui_runner/lenra_application_model.dart';
 import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
@@ -53,7 +51,6 @@ class Store extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<AuthModel>(create: (context) => AuthModel()),
         ChangeNotifierProvider<BuildModel>(create: (context) => BuildModel()),
-        ChangeNotifierProvider<UserApplicationModel>(create: (context) => UserApplicationModel()),
         ChangeNotifierProvider<StoreModel>(create: (context) => StoreModel()),
         ChangeNotifierProvider<CguModel>(create: (context) => CguModel()),
         ChangeNotifierProxyProvider<AuthModel, SocketModel>(
@@ -67,19 +64,6 @@ class Store extends StatelessWidget {
             return socketModel;
           },
         ),
-        ChangeNotifierProxyProvider2<UserApplicationModel, AuthModel, LenraApplicationModel>(
-            create: (context) => LenraApplicationModel(
-                  Config.instance.httpEndpoint,
-                  context.read<UserApplicationModel>().currentApp ?? "",
-                  context.read<AuthModel>().accessToken ?? "",
-                ),
-            update: (_, userApplicationModel, authModel, applicationModel) {
-              return LenraApplicationModel(
-                Config.instance.httpEndpoint,
-                userApplicationModel.currentApp ?? "",
-                authModel.accessToken ?? "",
-              );
-            }),
       ],
       builder: (BuildContext context, _) => LenraTheme(
         themeData: themeData,
