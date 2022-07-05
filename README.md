@@ -30,8 +30,7 @@
   </p>
 </div>
 
-
-
+The Client Store repository is the main entrypoint of Lenra to access an application when not considering the [devtools](https://github.com/lenra-io/dev-tools). For the moment, you can only access an application by entering its link into your browser but the goal of this repository is to provide a Store of applications so that you could browse and find the applications you need. app.lenra.io is actually this repository running on our servers.
 
 <!-- GETTING STARTED -->
 
