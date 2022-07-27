@@ -10,7 +10,7 @@
 [![Forks][forks-shield]][forks-url]
 [![Stargazers][stars-shield]][stars-url]
 [![Issues][issues-shield]][issues-url]
-[![MIT License][license-shield]][license-url]
+[![GPL License][license-shield]][license-url]
 
 
 
@@ -81,7 +81,7 @@ Don't forget to give the project a star if you liked it! Thanks again!
 ## License
 
 TODO
-<!-- Distributed under the **MIT** License. See [LICENSE](./LICENSE) for more information. -->
+Distributed under the **GPL** License. See [LICENSE](./LICENSE) for more information.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -108,6 +108,6 @@ Project Link: [https://github.com/lenra-io/client-store](https://github.com/lenr
 [issues-shield]: https://img.shields.io/github/issues/lenra-io/client-store.svg?style=for-the-badge
 [issues-url]: https://github.com/lenra-io/client-store/issues
 [license-shield]: https://img.shields.io/github/license/lenra-io/client-store.svg?style=for-the-badge
-[license-url]: https://github.com/lenra-io/client-store/blob/master/LICENSE.txt
+[license-url]: https://github.com/lenra-io/client-store/blob/master/LICENSE
 
 
