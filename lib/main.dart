@@ -1,5 +1,3 @@
-import 'package:client_app/models/app_socket_model.dart';
-import 'package:client_app/models/socket_model.dart';
 import 'package:client_common/config/config.dart';
 import 'package:client_common/models/auth_model.dart';
 import 'package:client_common/models/build_model.dart';
@@ -9,6 +7,8 @@ import 'package:client_store/navigation/store_navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:lenra_components/theme/lenra_theme.dart';
 import 'package:lenra_components/theme/lenra_theme_data.dart';
+import 'package:lenra_ui_runner/models/app_socket_model.dart';
+import 'package:lenra_ui_runner/models/socket_model.dart';
 import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
