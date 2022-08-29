@@ -77,7 +77,6 @@ Widget build(BuildContext context) {
     providers: [
       ChangeNotifierProvider&lt;AuthModel&gt;(create: (context) =&gt; AuthModel()),
       ChangeNotifierProvider&lt;BuildModel&gt;(create: (context) =&gt; BuildModel()),
-      ChangeNotifierProvider&lt;UserApplicationModel&gt;(create: (context) =&gt; UserApplicationModel()),
       ChangeNotifierProvider&lt;StoreModel&gt;(create: (context) =&gt; StoreModel()),
       ChangeNotifierProvider&lt;CguModel&gt;(create: (context) =&gt; CguModel()),
       ChangeNotifierProxyProvider&lt;AuthModel, SocketModel&gt;(
@@ -91,19 +90,6 @@ Widget build(BuildContext context) {
           return socketModel;
         },
       ),
-      ChangeNotifierProxyProvider2&lt;UserApplicationModel, AuthModel, LenraApplicationModel&gt;(
-          create: (context) =&gt; LenraApplicationModel(
-                Config.instance.httpEndpoint,
-                context.read&lt;UserApplicationModel&gt;().currentApp ?? &quot;&quot;,
-                context.read&lt;AuthModel&gt;().accessToken ?? &quot;&quot;,
-              ),
-          update: (_, userApplicationModel, authModel, applicationModel) {
-            return LenraApplicationModel(
-              Config.instance.httpEndpoint,
-              userApplicationModel.currentApp ?? &quot;&quot;,
-              authModel.accessToken ?? &quot;&quot;,
-            );
-          }),
     ],
     builder: (BuildContext context, _) =&gt; LenraTheme(
       themeData: themeData,

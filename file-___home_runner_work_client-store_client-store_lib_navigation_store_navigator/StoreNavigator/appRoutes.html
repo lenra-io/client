@@ -70,9 +70,6 @@
         child: const HomePage(),
       ),
   appRoute: (Map&lt;String, String&gt; params) =&gt; PageGuard(
-        onInit: (context) {
-          context.read&lt;UserApplicationModel&gt;().currentApp = params[&quot;appName&quot;];
-        },
         guards: [
           Guard.checkAuthenticated,
           Guard.checkCguAccepted,
@@ -81,6 +78,8 @@
         builder: (context) {
           return App(
             appName: params[&quot;appName&quot;]!,
+            accessToken: context.watch&lt;AuthModel&gt;().accessToken ?? &quot;&quot;,
+            httpEndpoint: Config.instance.httpEndpoint,
           );
         },
       )
