@@ -14,13 +14,10 @@ class InvitePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     UserApplicationModel userApplicationModel = context.read<UserApplicationModel>();
-    // ApiError? acceptError = context.select<UserApplicationModel, ApiError?>((m) => m.acceptInvitationStatus.error);
-    // ApiError? getInvitationError = context.select<UserApplicationModel, ApiError?>((m) => m.getInvitationStatus.error);
 
-    userApplicationModel.getInvitation(uuid).then((invitation) => {
-          userApplicationModel.acceptInvitation(uuid).then(
-              (value) => {Navigator.of(context).pushReplacementNamed(StoreNavigator.buildAppRoute(value.appName))})
-        });
+    userApplicationModel
+        .acceptInvitation(uuid)
+        .then((value) => {Navigator.of(context).pushReplacementNamed(StoreNavigator.buildAppRoute(value.appName))});
 
     return const SimplePage(
       child: LenraFlex(
