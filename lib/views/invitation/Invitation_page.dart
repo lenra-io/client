@@ -6,17 +6,17 @@ import 'package:lenra_components/component/lenra_text.dart';
 import 'package:lenra_components/layout/lenra_flex.dart';
 import 'package:provider/provider.dart';
 
-class InvitePage extends StatelessWidget {
-  final String uuid;
+class InvitationPage extends StatelessWidget {
+  final String invitation_uuid;
 
-  const InvitePage({Key? key, required this.uuid}) : super(key: key);
+  const InvitationPage({Key? key, required this.invitation_uuid}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     UserApplicationModel userApplicationModel = context.read<UserApplicationModel>();
 
     userApplicationModel
-        .acceptInvitation(uuid)
+        .acceptInvitation(invitation_uuid)
         .then((value) => {Navigator.of(context).pushReplacementNamed(StoreNavigator.buildAppRoute(value.appName))});
 
     return const SimplePage(
@@ -24,8 +24,8 @@ class InvitePage extends StatelessWidget {
         direction: Axis.vertical,
         crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
-          LenraText(text: "You will be redirect to the application, please wait."),
-          LenraText(text: "If an errors occurs please try again later."),
+          LenraText(text: "You are being redirected to the application, please wait."),
+          LenraText(text: "If an error occurs please try again later."),
         ],
       ),
     );

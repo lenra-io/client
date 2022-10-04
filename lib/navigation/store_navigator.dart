@@ -5,7 +5,7 @@ import 'package:client_common/navigator/guard.dart';
 import 'package:client_common/navigator/page_guard.dart';
 import 'package:client_common/views/page_404.dart';
 import 'package:client_store/views/home_page.dart';
-import 'package:client_store/views/invitation/invite_page.dart';
+import 'package:client_store/views/invitation/Invitation_page.dart';
 import 'package:flutter/widgets.dart';
 import 'package:lenra_ui_runner/app.dart';
 import 'package:provider/provider.dart';
@@ -52,8 +52,8 @@ class StoreNavigator extends CommonNavigator {
             Guard.checkCguAccepted,
             Guard.checkIsUser,
           ],
-          child: InvitePage(
-            uuid: params["uuid"]!,
+          child: InvitationPage(
+            invitation_uuid: params["uuid"]!,
           ),
         )
   };
