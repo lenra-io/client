@@ -12,15 +12,13 @@ dependencies:
   logging: ^1.0.2
   sentry_flutter: ^5.1.0
   client_common:
-    path: "../client-common"
-    # git:
-    #   url: git@github.com:lenra-io/client-common.git
-    #   ref: v1.0.0-beta.11
+    git:
+      url: git@github.com:lenra-io/client-common.git
+      ref: v1.0.0-beta.13
   lenra_ui_runner:
-    path: "../lenra_ui_runner"
-    # git:
-    #   url: git@github.com:lenra-io/lenra_ui_runner.git
-    #   ref: v1.0.0-beta.87
+    git:
+      url: git@github.com:lenra-io/lenra_ui_runner.git
+      ref: v1.0.0-beta.89
   lenra_components:
     git:
       url: git@github.com:lenra-io/lenra_components.git
