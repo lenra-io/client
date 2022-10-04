@@ -5,6 +5,7 @@ import 'package:client_common/navigator/guard.dart';
 import 'package:client_common/navigator/page_guard.dart';
 import 'package:client_common/views/page_404.dart';
 import 'package:client_store/views/home_page.dart';
+import 'package:client_store/views/invitation/invitation_page.dart';
 import 'package:flutter/widgets.dart';
 import 'package:lenra_ui_runner/app.dart';
 import 'package:provider/provider.dart';
@@ -12,6 +13,8 @@ import 'package:provider/provider.dart';
 class StoreNavigator extends CommonNavigator {
   static const String homeRoute = "/";
   static const String appRoute = "/app/:appName";
+  static const String invitationRoute = "/app/invitations/:uuid";
+
   static String buildAppRoute(String appName) => "/app/$appName";
   static String? currentRoute;
   static final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
@@ -42,6 +45,16 @@ class StoreNavigator extends CommonNavigator {
               httpEndpoint: Config.instance.httpEndpoint,
             );
           },
+        ),
+    invitationRoute: (Map<String, String> params) => PageGuard(
+          guards: [
+            Guard.checkAuthenticated,
+            Guard.checkCguAccepted,
+            Guard.checkIsUser,
+          ],
+          child: InvitationPage(
+            invitationUuid: params["uuid"]!,
+          ),
         )
   };
 

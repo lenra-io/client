@@ -3,6 +3,7 @@ import 'package:client_common/models/auth_model.dart';
 import 'package:client_common/models/build_model.dart';
 import 'package:client_common/models/cgu_model.dart';
 import 'package:client_common/models/store_model.dart';
+import 'package:client_common/models/user_application_model.dart';
 import 'package:client_store/navigation/store_navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:lenra_components/theme/lenra_theme.dart';
@@ -53,6 +54,7 @@ class Store extends StatelessWidget {
         ChangeNotifierProvider<BuildModel>(create: (context) => BuildModel()),
         ChangeNotifierProvider<StoreModel>(create: (context) => StoreModel()),
         ChangeNotifierProvider<CguModel>(create: (context) => CguModel()),
+        ChangeNotifierProvider<UserApplicationModel>(create: (context) => UserApplicationModel()),
         ChangeNotifierProxyProvider<AuthModel, SocketModel>(
           create: (context) => AppSocketModel(context.read<AuthModel>().accessToken ?? ""),
           update: (_, authModel, socketModel) {
