@@ -7,16 +7,16 @@ import 'package:lenra_components/layout/lenra_flex.dart';
 import 'package:provider/provider.dart';
 
 class InvitationPage extends StatelessWidget {
-  final String invitation_uuid;
+  final String invitationUuid;
 
-  const InvitationPage({Key? key, required this.invitation_uuid}) : super(key: key);
+  const InvitationPage({Key? key, required this.invitationUuid}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     UserApplicationModel userApplicationModel = context.read<UserApplicationModel>();
 
     userApplicationModel
-        .acceptInvitation(invitation_uuid)
+        .acceptInvitation(invitationUuid)
         .then((value) => {Navigator.of(context).pushReplacementNamed(StoreNavigator.buildAppRoute(value.appName))});
 
     return const SimplePage(
