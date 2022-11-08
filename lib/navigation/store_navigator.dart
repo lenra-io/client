@@ -1,14 +1,11 @@
-import 'package:client_common/config/config.dart';
-import 'package:client_common/models/auth_model.dart';
 import 'package:client_common/navigator/common_navigator.dart';
 import 'package:client_common/navigator/guard.dart';
 import 'package:client_common/navigator/page_guard.dart';
 import 'package:client_common/views/page_404.dart';
+import 'package:client_store/views/app_page.dart';
 import 'package:client_store/views/home_page.dart';
 import 'package:client_store/views/invitation/invitation_page.dart';
 import 'package:flutter/widgets.dart';
-import 'package:lenra_ui_runner/app.dart';
-import 'package:provider/provider.dart';
 
 class StoreNavigator extends CommonNavigator {
   static const String homeRoute = "/";
@@ -39,10 +36,8 @@ class StoreNavigator extends CommonNavigator {
             Guard.checkIsUser,
           ],
           builder: (context) {
-            return App(
+            return AppPage(
               appName: params["appName"]!,
-              accessToken: context.watch<AuthModel>().accessToken ?? "",
-              httpEndpoint: Config.instance.httpEndpoint,
             );
           },
         ),
