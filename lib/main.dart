@@ -63,6 +63,7 @@ class Store extends StatelessWidget {
               [StoreNavigator.handleGenerateRoute(RouteSettings(name: initialRoute))],
           onGenerateRoute: StoreNavigator.handleGenerateRoute,
           theme: ThemeData(
+            visualDensity: VisualDensity.standard,
             textTheme: TextTheme(bodyText2: themeData.lenraTextThemeData.bodyText),
           ),
         ),
