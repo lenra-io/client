@@ -2,6 +2,8 @@ import 'package:client_common/api/response_models/app_response.dart';
 import 'package:client_common/models/user_application_model.dart';
 import 'package:client_common/views/simple_page.dart';
 import 'package:flutter/material.dart';
+import 'package:lenra_components/component/lenra_text.dart';
+import 'package:lenra_components/lenra_components.dart';
 import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -13,13 +15,13 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool isInitialized = false;
-  List<AppResponse>? apps;
+  List<AppResponse>? openedApps;
 
   @override
   void initState() {
     context.read<UserApplicationModel>().getAppsUserOpened().then((value) {
       setState(() {
-        apps = value;
+        openedApps = value;
         isInitialized = true;
       });
     });
@@ -28,12 +30,39 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return const SimplePage(
+    if (!isInitialized) return const CircularProgressIndicator();
+    return SimplePage(
       title: "Lenra is under development",
-      child: Text(
-        "To access an application you must have its link provided by its creator.",
-        textAlign: TextAlign.center,
+      child: LenraFlex(
+        children: openedApps!.map((app) => ApplicationCard(app: app)).toList(),
       ),
+    );
+  }
+}
+
+class ApplicationCard extends StatelessWidget {
+  final AppResponse app;
+
+  ApplicationCard({super.key, required this.app});
+
+  @override
+  Widget build(BuildContext context) {
+    var themeData = LenraThemeData();
+    return LenraFlex(
+      direction: Axis.vertical,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      children: [
+        Container(
+          width: 64,
+          height: 64,
+          color: app.color,
+          child: LenraText(
+            style: themeData.lenraTextThemeData.headline1,
+            text: app.name[0].toUpperCase(),
+          ),
+        ),
+        LenraText(text: app.name),
+      ],
     );
   }
 }
