@@ -1,6 +1,5 @@
 import 'package:client_common/api/response_models/app_response.dart';
 import 'package:client_common/models/user_application_model.dart';
-import 'package:client_common/views/simple_page.dart';
 import 'package:flutter/material.dart';
 import 'package:lenra_components/component/lenra_text.dart';
 import 'package:lenra_components/lenra_components.dart';
@@ -31,10 +30,29 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     if (!isInitialized) return const CircularProgressIndicator();
-    return SimplePage(
-      title: "Lenra is under development",
-      child: LenraFlex(
-        children: openedApps!.map((app) => ApplicationCard(app: app)).toList(),
+    return Scaffold(
+      backgroundColor: LenraColorThemeData.lenraWhite,
+      body: LenraFlex(
+        direction: Axis.vertical,
+        fillParent: true,
+        spacing: 24,
+        children: [
+          const SizedBox(
+            child: LenraFlex(
+              mainAxisAlignment: MainAxisAlignment.end,
+              padding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+              fillParent: true,
+              children: [
+                Text("Logo"),
+              ],
+            ),
+          ),
+          LenraFlex(
+            spacing: 24,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: openedApps!.map((app) => ApplicationCard(app: app)).toList(),
+          ),
+        ],
       ),
     );
   }
@@ -43,7 +61,7 @@ class _HomePageState extends State<HomePage> {
 class ApplicationCard extends StatelessWidget {
   final AppResponse app;
 
-  ApplicationCard({super.key, required this.app});
+  const ApplicationCard({super.key, required this.app});
 
   @override
   Widget build(BuildContext context) {
@@ -51,14 +69,21 @@ class ApplicationCard extends StatelessWidget {
     return LenraFlex(
       direction: Axis.vertical,
       crossAxisAlignment: CrossAxisAlignment.center,
+      spacing: 16,
       children: [
         Container(
           width: 64,
           height: 64,
-          color: app.color,
-          child: LenraText(
-            style: themeData.lenraTextThemeData.headline1,
-            text: app.name[0].toUpperCase(),
+          decoration: BoxDecoration(
+            color: app.color,
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Center(
+            child: LenraText(
+              style: themeData.lenraTextThemeData.headline1,
+              textAlign: TextAlign.center,
+              text: app.name[0].toUpperCase(),
+            ),
           ),
         ),
         LenraText(text: app.name),
