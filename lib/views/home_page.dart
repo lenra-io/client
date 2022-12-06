@@ -42,7 +42,17 @@ class _HomePageState extends State<HomePage> {
         fillParent: true,
         spacing: 24,
         children: [
-          SizedBox(
+          Container(
+            decoration: const BoxDecoration(
+              color: Colors.white,
+              boxShadow: [
+                BoxShadow(
+                  blurRadius: 8,
+                  color: Color(0x1A000000),
+                  offset: Offset(0, 1),
+                ),
+              ],
+            ),
             child: LenraFlex(
               mainAxisAlignment: MainAxisAlignment.end,
               padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
