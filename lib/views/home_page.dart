@@ -1,6 +1,10 @@
 import 'package:client_common/api/response_models/app_response.dart';
+import 'package:client_common/models/auth_model.dart';
 import 'package:client_common/models/user_application_model.dart';
+import 'package:client_common/navigator/common_navigator.dart';
+import 'package:client_store/navigation/store_navigator.dart';
 import 'package:flutter/material.dart';
+import 'package:lenra_components/component/lenra_dropdown_button.dart';
 import 'package:lenra_components/component/lenra_text.dart';
 import 'package:lenra_components/lenra_components.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +18,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   bool isInitialized = false;
+  bool showDropdown = false;
   List<AppResponse>? openedApps;
 
   @override
@@ -37,13 +42,45 @@ class _HomePageState extends State<HomePage> {
         fillParent: true,
         spacing: 24,
         children: [
-          const SizedBox(
+          SizedBox(
             child: LenraFlex(
               mainAxisAlignment: MainAxisAlignment.end,
-              padding: EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
               fillParent: true,
               children: [
-                Text("Logo"),
+                InkWell(
+                  onTap: () {
+                    setState(() {
+                      showDropdown = true;
+                    });
+                  },
+                  child: LenraDropdownButton(
+                    icon: null,
+                    type: LenraComponentType.tertiary,
+                    text: "Menu",
+                    child: LenraFlex(
+                      spacing: 8,
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      direction: Axis.vertical,
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            Navigator.of(context).pushNamed(CommonNavigator.profileRoute);
+                          },
+                          child: const Text("Profile"),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            context.read<AuthModel>().logout().then((_) {
+                              Navigator.of(context).pushNamed(StoreNavigator.homeRoute);
+                            });
+                          },
+                          child: const Text("Disconnect"),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
               ],
             ),
           ),
@@ -66,28 +103,38 @@ class ApplicationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var themeData = LenraThemeData();
-    return LenraFlex(
-      direction: Axis.vertical,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      spacing: 16,
-      children: [
-        Container(
-          width: 64,
-          height: 64,
-          decoration: BoxDecoration(
-            color: app.color,
-            borderRadius: BorderRadius.circular(8),
-          ),
-          child: Center(
-            child: LenraText(
-              style: themeData.lenraTextThemeData.headline1,
-              textAlign: TextAlign.center,
-              text: app.name[0].toUpperCase(),
+    return InkWell(
+      customBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      onTap: () {
+        Navigator.of(context).pushNamed("/app/${app.serviceName}");
+      },
+      child: LenraFlex(
+        direction: Axis.vertical,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        padding: const EdgeInsets.all(8),
+        spacing: 8,
+        children: [
+          Container(
+            width: 64,
+            height: 64,
+            decoration: BoxDecoration(
+              color: app.color,
+              borderRadius: BorderRadius.circular(8),
+            ),
+            child: Center(
+              child: LenraText(
+                style: themeData.lenraTextThemeData.headline1,
+                textAlign: TextAlign.center,
+                text: app.name[0].toUpperCase(),
+              ),
             ),
           ),
-        ),
-        LenraText(text: app.name),
-      ],
+          LenraText(
+            style: themeData.lenraTextThemeData.bodyText,
+            text: app.name,
+          ),
+        ],
+      ),
     );
   }
 }
