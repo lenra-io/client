@@ -27,6 +27,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   flutter_lints: ^2.0.0
+  flutter_launcher_icons: "^0.11.0"
 flutter:
   uses-material-design: true
   assets:
@@ -37,11 +38,25 @@ flutter:
         - asset: packages/client_common/fonts/Source_Sans_Pro/SourceSansPro-Regular.ttf
         - asset: packages/client_common/fonts/Source_Sans_Pro/SourceSansPro-SemiBold.ttf
         - asset: packages/client_common/fonts/Source_Sans_Pro/SourceSansPro-Bold.ttf
-flutter_icons: # see https://pub.dev/packages/flutter_launcher_icons
-  image_path: "assets/images/icon-512.png"
-  image_path_ios: "assets/images/icon-1024-white-bg.png"
-  remove_alpha_ios: true
+flutter_icons:
+  # Android
   android: true
-  ios: true
+  image_path: "assets/images/icon-512.png"
   adaptive_icon_background: "#FFFFFF" # only available for Android 8.0 devices and above
   adaptive_icon_foreground: "assets/images/maskable-icon.png"
+  # IOS
+  ios: true
+  image_path_ios: "assets/images/icon-1024-white-bg.png"
+  remove_alpha_ios: true
+  # Web
+  web:
+    generate: true
+    image_path: "assets/images/icon-512.png"
+  # Windows
+  windows:
+    generate: true
+    image_path: "assets/images/icon-512.png"
+  # MacOS
+  macos:
+    generate: true
+    image_path: "assets/images/icon-512.png"
