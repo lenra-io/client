@@ -1,4 +1,5 @@
 import 'package:client_common/models/user_application_model.dart';
+import 'package:client_common/navigator/common_navigator.dart';
 import 'package:client_common/views/simple_page.dart';
 import 'package:client_store/navigation/store_navigator.dart';
 import 'package:flutter/material.dart';
@@ -17,7 +18,7 @@ class InvitationPage extends StatelessWidget {
 
     userApplicationModel
         .acceptInvitation(invitationUuid)
-        .then((value) => {Navigator.of(context).pushReplacementNamed(StoreNavigator.buildAppRoute(value.appName))});
+        .then((value) => {CommonNavigator.goPath(context, StoreNavigator.buildAppRoute(value.appName))});
 
     return const SimplePage(
       child: LenraFlex(
