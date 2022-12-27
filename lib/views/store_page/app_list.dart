@@ -1,4 +1,5 @@
 import 'package:client_common/models/store_model.dart';
+import 'package:client_common/navigator/common_navigator.dart';
 import 'package:client_common/views/error.dart';
 import 'package:client_store/navigation/store_navigator.dart';
 import 'package:client_store/views/store_page/app_button.dart';
@@ -21,7 +22,7 @@ class AppList extends StatelessWidget {
           return AppButton(
             appInfo: appInfo,
             onPressed: () {
-              Navigator.of(context).pushNamed(StoreNavigator.buildAppRoute(appInfo.serviceName));
+              CommonNavigator.goPath(context, StoreNavigator.buildAppRoute(appInfo.serviceName));
             },
           );
         }).toList(),
