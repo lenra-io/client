@@ -56,12 +56,9 @@ class Store extends StatelessWidget {
       ],
       builder: (BuildContext context, _) => LenraTheme(
         themeData: themeData,
-        child: MaterialApp(
+        child: MaterialApp.router(
+          routerConfig: StoreNavigator.router,
           title: 'Lenra',
-          navigatorKey: StoreNavigator.navigatorKey,
-          onGenerateInitialRoutes: (initialRoute) =>
-              [StoreNavigator.handleGenerateRoute(RouteSettings(name: initialRoute))],
-          onGenerateRoute: StoreNavigator.handleGenerateRoute,
           theme: ThemeData(
             visualDensity: VisualDensity.standard,
             textTheme: TextTheme(bodyText2: themeData.lenraTextThemeData.bodyText),

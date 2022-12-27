@@ -75,14 +75,14 @@ class _HomePageState extends State<HomePage> {
                       children: [
                         InkWell(
                           onTap: () {
-                            Navigator.of(context).pushNamed(CommonNavigator.profileRoute);
+                            CommonNavigator.go(context, CommonNavigator.profile);
                           },
                           child: const Text("Profile"),
                         ),
                         InkWell(
                           onTap: () {
                             context.read<AuthModel>().logout().then((_) {
-                              Navigator.of(context).pushNamed(StoreNavigator.homeRoute);
+                              CommonNavigator.go(context, StoreNavigator.home);
                             });
                           },
                           child: const Text("Disconnect"),
@@ -116,7 +116,7 @@ class ApplicationCard extends StatelessWidget {
     return InkWell(
       customBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       onTap: () {
-        Navigator.of(context).pushNamed("/app/${app.serviceName}");
+        CommonNavigator.goPath(context, "/app/${app.serviceName}");
       },
       child: LenraFlex(
         direction: Axis.vertical,

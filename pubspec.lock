@@ -96,8 +96,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "v1.0.0-beta.20"
-      resolved-ref: f25cf741f2995574da4a7f5611cd1543f20fd851
+      ref: "v1.0.0-beta.25"
+      resolved-ref: aacd46137a01a3e681df39f04bc041b27b439653
       url: "git@github.com:lenra-io/client-common.git"
     source: git
     version: "1.0.0"
@@ -228,6 +228,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.0.2"
+  go_router:
+    dependency: "direct main"
+    description:
+      name: go_router
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "5.2.4"
   html:
     dependency: transitive
     description:
@@ -281,8 +288,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "v1.0.0-beta.49"
-      resolved-ref: "2643bf10012d59b6e7e13e0d9f44f18c09a14975"
+      ref: "v1.0.0-beta.50"
+      resolved-ref: "105fbc6d4ec8550b23832f0c07923e39b6e0d665"
       url: "git@github.com:lenra-io/lenra_components.git"
     source: git
     version: "0.0.0"
@@ -290,8 +297,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "v1.0.0-beta.94"
-      resolved-ref: ef2693a3bd2ea732022a28b7fb13f8df51128567
+      ref: "v1.0.0-beta.99"
+      resolved-ref: e3b9e607bbfd9f7cfa6b63c9acf9567623aa85d8
       url: "git@github.com:lenra-io/lenra_ui_runner.git"
     source: git
     version: "0.0.0"
@@ -582,4 +589,4 @@ packages:
     version: "3.1.1"
 sdks:
   dart: ">=2.18.0 <3.0.0"
-  flutter: ">=3.0.0"
+  flutter: ">=3.3.0"
