@@ -21,8 +21,7 @@
 </head>
 
 
-<body data-base-href="../../"
-      data-using-base-href="false">
+<body data-base-href="../../" data-using-base-href="false">
 
 <div id="overlay-under-drawer"></div>
 
@@ -76,7 +75,7 @@ Widget build(BuildContext context) {
   return InkWell(
     customBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
     onTap: () {
-      Navigator.of(context).pushNamed(&quot;&#47;app&#47;${app.serviceName}&quot;);
+      CommonNavigator.goPath(context, &quot;&#47;app&#47;${app.serviceName}&quot;);
     },
     child: LenraFlex(
       direction: Axis.vertical,
@@ -173,7 +172,7 @@ Widget build(BuildContext context) {
 
 
 <script src="../../static-assets/highlight.pack.js?v1"></script>
-<script src="../../static-assets/script.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
 
 
 

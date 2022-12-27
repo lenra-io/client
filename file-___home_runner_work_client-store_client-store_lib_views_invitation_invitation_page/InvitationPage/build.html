@@ -21,8 +21,7 @@
 </head>
 
 
-<body data-base-href="../../"
-      data-using-base-href="false">
+<body data-base-href="../../" data-using-base-href="false">
 
 <div id="overlay-under-drawer"></div>
 
@@ -76,7 +75,7 @@ Widget build(BuildContext context) {
 
   userApplicationModel
       .acceptInvitation(invitationUuid)
-      .then((value) =&gt; {Navigator.of(context).pushReplacementNamed(StoreNavigator.buildAppRoute(value.appName))});
+      .then((value) =&gt; {CommonNavigator.goPath(context, StoreNavigator.buildAppRoute(value.appName))});
 
   return const SimplePage(
     child: LenraFlex(
@@ -155,7 +154,7 @@ Widget build(BuildContext context) {
 
 
 <script src="../../static-assets/highlight.pack.js?v1"></script>
-<script src="../../static-assets/script.js?v1"></script>
+<script src="../../static-assets/docs.dart.js"></script>
 
 
 
