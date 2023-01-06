@@ -33,7 +33,10 @@
   <title>client_store</title>
   <link rel="manifest" href="manifest.json">
 
+  <link rel="stylesheet" as="style" href="loading.css" />
+
   <meta name="lenra-server-url" content="${LENRA_SERVER_URL}">
+
 
   <script>
     // The value below is injected by flutter build, do not touch.
@@ -44,6 +47,9 @@
 </head>
 
 <body>
+  <svg width="40" height="40" version="1.1" xmlns="http://www.w3.org/2000/svg">
+    <circle cx="20" cy="20" r="15" />
+  </svg>
   <script>
     window.addEventListener('load', function (ev) {
       // Download main.dart.js
