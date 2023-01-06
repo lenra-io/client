@@ -18,8 +18,10 @@ class StoreNavigator extends CommonNavigator {
           Guard.checkCguAccepted,
           Guard.checkIsUser,
         ],
-        child: AppPage(
-          appName: state.params["appName"]!,
+        child: SafeArea(
+          child: AppPage(
+            appName: state.params["appName"]!,
+          ),
         ),
       ),
     ),
@@ -35,8 +37,10 @@ class StoreNavigator extends CommonNavigator {
           Guard.checkCguAccepted,
           Guard.checkIsUser,
         ],
-        child: InvitationPage(
-          invitationUuid: state.params["uuid"]!,
+        child: SafeArea(
+          child: InvitationPage(
+            invitationUuid: state.params["uuid"]!,
+          ),
         ),
       ),
     ),
@@ -52,7 +56,9 @@ class StoreNavigator extends CommonNavigator {
           Guard.checkCguAccepted,
           Guard.checkIsUser,
         ],
-        child: const HomePage(),
+        child: const SafeArea(
+          child: HomePage(),
+        ),
       ),
     ),
   );
