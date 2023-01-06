@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.client_store">
+    package="io.lenra.client_store">
    <application
-        android:label="client_store"
+        android:label="Lenra"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
