@@ -10,7 +10,7 @@ import 'package:go_router/go_router.dart';
 class StoreNavigator extends CommonNavigator {
   static GoRoute app = GoRoute(
     name: "app",
-    path: "/app/:appName",
+    path: "app/:appName",
     pageBuilder: (context, state) => NoTransitionPage(
       child: PageGuard(
         guards: [
@@ -27,7 +27,7 @@ class StoreNavigator extends CommonNavigator {
 
   static GoRoute appInvitation = GoRoute(
     name: "app-invitation",
-    path: "/app/invitations/:uuid",
+    path: "app/invitations/:uuid",
     pageBuilder: (context, state) => NoTransitionPage(
       child: PageGuard(
         guards: [
@@ -43,29 +43,28 @@ class StoreNavigator extends CommonNavigator {
   );
 
   static GoRoute home = GoRoute(
-    name: "home",
-    path: "/",
-    pageBuilder: (context, state) => NoTransitionPage(
-      child: PageGuard(
-        guards: [
-          Guard.checkAuthenticated,
-          Guard.checkCguAccepted,
-          Guard.checkIsUser,
-        ],
-        child: const HomePage(),
-      ),
-    ),
-  );
+      name: "home",
+      path: "/",
+      pageBuilder: (context, state) => NoTransitionPage(
+            child: PageGuard(
+              guards: [
+                Guard.checkAuthenticated,
+                Guard.checkCguAccepted,
+                Guard.checkIsUser,
+              ],
+              child: const HomePage(),
+            ),
+          ),
+      routes: [
+        ...CommonNavigator.authRoutes,
+        app,
+        appInvitation,
+      ]);
 
   static String buildAppRoute(String appName) => "/app/$appName";
 
   static final GoRouter router = GoRouter(
-    routes: [
-      ...CommonNavigator.authRoutes,
-      home,
-      app,
-      appInvitation,
-    ],
+    routes: [home],
   );
 }
 
