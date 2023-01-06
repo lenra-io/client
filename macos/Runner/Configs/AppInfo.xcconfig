@@ -8,7 +8,7 @@
 PRODUCT_NAME = client_store
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.clientStore
+PRODUCT_BUNDLE_IDENTIFIER = io.lenra.clientStore
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2022 com.example. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2022 io.lenra. All rights reserved.
