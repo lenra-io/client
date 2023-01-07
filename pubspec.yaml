@@ -53,6 +53,8 @@ flutter_icons:
   web:
     generate: true
     image_path: "assets/images/icon-512.png"
+    background_color: "#FFFFFF"
+    theme_color: "#1E232C"
   # Windows
   windows:
     generate: true
