@@ -89,13 +89,13 @@ BEGIN
     BEGIN
         BLOCK "040904e4"
         BEGIN
-            VALUE "CompanyName", "com.example" "\0"
-            VALUE "FileDescription", "client_store" "\0"
+            VALUE "CompanyName", "io.lenra" "\0"
+            VALUE "FileDescription", "Lenra" "\0"
             VALUE "FileVersion", VERSION_AS_STRING "\0"
             VALUE "InternalName", "client_store" "\0"
-            VALUE "LegalCopyright", "Copyright (C) 2022 com.example. All rights reserved." "\0"
-            VALUE "OriginalFilename", "client_store.exe" "\0"
-            VALUE "ProductName", "client_store" "\0"
+            VALUE "LegalCopyright", "Copyright (C) 2022 io.lenra. All rights reserved." "\0"
+            VALUE "OriginalFilename", "lenra-app.exe" "\0"
+            VALUE "ProductName", "Lenra" "\0"
             VALUE "ProductVersion", VERSION_AS_STRING "\0"
         END
     END

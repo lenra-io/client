@@ -6,6 +6,7 @@ import 'package:client_common/models/store_model.dart';
 import 'package:client_common/models/user_application_model.dart';
 import 'package:client_store/navigation/store_navigator.dart';
 import 'package:flutter/material.dart';
+import 'package:lenra_components/theme/lenra_color_theme_data.dart';
 import 'package:lenra_components/theme/lenra_theme.dart';
 import 'package:lenra_components/theme/lenra_theme_data.dart';
 import 'package:logging/logging.dart';
@@ -62,6 +63,7 @@ class Store extends StatelessWidget {
           theme: ThemeData(
             visualDensity: VisualDensity.standard,
             textTheme: TextTheme(bodyText2: themeData.lenraTextThemeData.bodyText),
+            scaffoldBackgroundColor: LenraColorThemeData.lenraWhite,
           ),
         ),
       ),
