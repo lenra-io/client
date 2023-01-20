@@ -1,6 +1,5 @@
 import 'package:client_common/navigator/common_navigator.dart';
 import 'package:client_common/navigator/guard.dart';
-import 'package:client_common/navigator/page_guard.dart';
 import 'package:client_store/views/app_page.dart';
 import 'package:client_store/views/home_page.dart';
 import 'package:client_store/views/invitation/invitation_page.dart';
@@ -11,16 +10,14 @@ class StoreNavigator extends CommonNavigator {
   static GoRoute app = GoRoute(
     name: "app",
     path: "app/:appName",
+    redirect: (context, state) => Guard.guards(context, [
+      Guard.checkAuthenticated,
+      Guard.checkCguAccepted,
+      Guard.checkIsUser,
+    ]),
     pageBuilder: (context, state) => NoTransitionPage(
-      child: PageGuard(
-        guards: [
-          Guard.checkAuthenticated,
-          Guard.checkCguAccepted,
-          Guard.checkIsUser,
-        ],
-        child: AppPage(
-          appName: state.params["appName"]!,
-        ),
+      child: AppPage(
+        appName: state.params["appName"]!,
       ),
     ),
   );
@@ -28,43 +25,59 @@ class StoreNavigator extends CommonNavigator {
   static GoRoute appInvitation = GoRoute(
     name: "app-invitation",
     path: "app/invitations/:uuid",
+    redirect: (context, state) => Guard.guards(context, [
+      Guard.checkAuthenticated,
+      Guard.checkCguAccepted,
+      Guard.checkIsUser,
+    ]),
     pageBuilder: (context, state) => NoTransitionPage(
-      child: PageGuard(
-        guards: [
-          Guard.checkAuthenticated,
-          Guard.checkCguAccepted,
-          Guard.checkIsUser,
-        ],
-        child: InvitationPage(
-          invitationUuid: state.params["uuid"]!,
-        ),
+      child: InvitationPage(
+        invitationUuid: state.params["uuid"]!,
       ),
     ),
   );
 
   static GoRoute home = GoRoute(
-      name: "home",
+    name: "home",
+    path: "home",
+    redirect: (context, state) => Guard.guards(context, [
+      Guard.checkAuthenticated,
+      Guard.checkCguAccepted,
+      Guard.checkIsUser,
+    ]),
+    pageBuilder: (context, state) => NoTransitionPage(
+      child: const HomePage(),
+    ),
+  );
+
+  static GoRoute root = GoRoute(
+      name: "root",
       path: "/",
-      pageBuilder: (context, state) => NoTransitionPage(
-            child: PageGuard(
-              guards: [
-                Guard.checkAuthenticated,
-                Guard.checkCguAccepted,
-                Guard.checkIsUser,
-              ],
-              child: const HomePage(),
-            ),
-          ),
+      pageBuilder: (context, state) {
+        return NoTransitionPage(
+          key: state.pageKey,
+          child: Builder(builder: (context) {
+            if (GoRouter.of(context).location == "/") {
+              WidgetsBinding.instance.addPostFrameCallback(((_) {
+                router.goNamed(home.name!);
+              }));
+            }
+            return Container();
+          }),
+        );
+      },
       routes: [
-        ...CommonNavigator.authRoutes,
-        app,
+        CommonNavigator.authRoutes,
+        // Onboarding & other pages
+        home,
         appInvitation,
+        app,
       ]);
 
   static String buildAppRoute(String appName) => "/app/$appName";
 
   static final GoRouter router = GoRouter(
-    routes: [home],
+    routes: [root],
   );
 }
 
