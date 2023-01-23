@@ -61,17 +61,15 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static GoRoute app = GoRoute(
   name: &quot;app&quot;,
-  path: &quot;&#47;app&#47;:appName&quot;,
+  path: &quot;app&#47;:appName&quot;,
+  redirect: (context, state) =&gt; Guard.guards(context, [
+    Guard.checkAuthenticated,
+    Guard.checkCguAccepted,
+    Guard.checkIsUser,
+  ]),
   pageBuilder: (context, state) =&gt; NoTransitionPage(
-    child: PageGuard(
-      guards: [
-        Guard.checkAuthenticated,
-        Guard.checkCguAccepted,
-        Guard.checkIsUser,
-      ],
-      child: AppPage(
-        appName: state.params[&quot;appName&quot;]!,
-      ),
+    child: AppPage(
+      appName: state.params[&quot;appName&quot;]!,
     ),
   ),
 );
@@ -122,6 +120,7 @@
           <li><a href="../../file-___home_runner_work_client-store_client-store_lib_navigation_store_navigator/StoreNavigator/app.html">app</a></li>
           <li><a href="../../file-___home_runner_work_client-store_client-store_lib_navigation_store_navigator/StoreNavigator/appInvitation.html">appInvitation</a></li>
           <li><a href="../../file-___home_runner_work_client-store_client-store_lib_navigation_store_navigator/StoreNavigator/home.html">home</a></li>
+          <li><a href="../../file-___home_runner_work_client-store_client-store_lib_navigation_store_navigator/StoreNavigator/root.html">root</a></li>
           <li><a href="../../file-___home_runner_work_client-store_client-store_lib_navigation_store_navigator/StoreNavigator/router.html">router</a></li>
 
         <li class="section-title"><a href="../../file-___home_runner_work_client-store_client-store_lib_navigation_store_navigator/StoreNavigator-class.html#static-methods">Static methods</a></li>
