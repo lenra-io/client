@@ -96,8 +96,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "v1.0.0-beta.26"
-      resolved-ref: "5905bf83624c00c64fa64784bcfbac4aa1bb249a"
+      ref: "v1.0.0-beta.31"
+      resolved-ref: "6dadef61fe1814990b48794bde6be335d79412da"
       url: "git@github.com:lenra-io/client-common.git"
     source: git
     version: "1.0.0"
@@ -234,7 +234,7 @@ packages:
       name: go_router
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "5.2.4"
+    version: "6.0.1"
   html:
     dependency: transitive
     description:
@@ -297,8 +297,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "v1.0.0-beta.101"
-      resolved-ref: "7b1cc291912592cb2474137700feb2469b95c089"
+      ref: "v1.0.0-beta.103"
+      resolved-ref: "0f8ff7a38befdbee277b8c104e748b647f3ae142"
       url: "git@github.com:lenra-io/lenra_ui_runner.git"
     source: git
     version: "0.0.0"
