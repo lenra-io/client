@@ -16,8 +16,10 @@ class StoreNavigator extends CommonNavigator {
       Guard.checkIsUser,
     ]),
     pageBuilder: (context, state) => NoTransitionPage(
-      child: AppPage(
-        appName: state.params["appName"]!,
+      child: SafeArea(
+        child: AppPage(
+          appName: state.params["appName"]!,
+        ),
       ),
     ),
   );
@@ -31,8 +33,10 @@ class StoreNavigator extends CommonNavigator {
       Guard.checkIsUser,
     ]),
     pageBuilder: (context, state) => NoTransitionPage(
-      child: InvitationPage(
-        invitationUuid: state.params["uuid"]!,
+      child: SafeArea(
+        child: InvitationPage(
+          invitationUuid: state.params["uuid"]!,
+        ),
       ),
     ),
   );
@@ -46,7 +50,9 @@ class StoreNavigator extends CommonNavigator {
       Guard.checkIsUser,
     ]),
     pageBuilder: (context, state) => NoTransitionPage(
-      child: const HomePage(),
+      child: const SafeArea(
+        child: HomePage(),
+      ),
     ),
   );
 
