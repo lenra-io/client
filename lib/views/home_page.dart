@@ -34,9 +34,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    if (!isInitialized) return const CircularProgressIndicator();
+    if (!isInitialized) return const Center(child: CircularProgressIndicator());
     return Scaffold(
-      backgroundColor: LenraColorThemeData.lenraWhite,
       body: LenraFlex(
         direction: Axis.vertical,
         fillParent: true,
