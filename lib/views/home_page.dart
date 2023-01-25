@@ -93,10 +93,14 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          LenraFlex(
-            spacing: 24,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: openedApps!.map((app) => ApplicationCard(app: app)).toList(),
+          Flexible(
+            child: SingleChildScrollView(
+              child: Wrap(
+                spacing: 24,
+                runSpacing: 8,
+                children: openedApps!.map((app) => ApplicationCard(app: app)).toList(),
+              ),
+            ),
           ),
         ],
       ),
@@ -112,37 +116,41 @@ class ApplicationCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var themeData = LenraThemeData();
-    return InkWell(
-      customBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
-      onTap: () {
-        CommonNavigator.goPath(context, "/app/${app.serviceName}");
-      },
-      child: LenraFlex(
-        direction: Axis.vertical,
-        crossAxisAlignment: CrossAxisAlignment.center,
-        padding: const EdgeInsets.all(8),
-        spacing: 8,
-        children: [
-          Container(
-            width: 64,
-            height: 64,
-            decoration: BoxDecoration(
-              color: app.color,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Center(
-              child: LenraText(
-                style: themeData.lenraTextThemeData.headline1,
-                textAlign: TextAlign.center,
-                text: app.name[0].toUpperCase(),
+    return Container(
+      constraints: const BoxConstraints(minWidth: 80, maxWidth: 80),
+      child: InkWell(
+        customBorder: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+        onTap: () {
+          CommonNavigator.goPath(context, "/app/${app.serviceName}");
+        },
+        child: LenraFlex(
+          direction: Axis.vertical,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          padding: const EdgeInsets.all(8),
+          spacing: 8,
+          children: [
+            Container(
+              width: 64,
+              height: 64,
+              decoration: BoxDecoration(
+                color: app.color,
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Center(
+                child: LenraText(
+                  style: themeData.lenraTextThemeData.headline1,
+                  textAlign: TextAlign.center,
+                  text: app.name[0].toUpperCase(),
+                ),
               ),
             ),
-          ),
-          LenraText(
-            style: themeData.lenraTextThemeData.bodyText,
-            text: app.name,
-          ),
-        ],
+            LenraText(
+              style: themeData.lenraTextThemeData.bodyText,
+              textAlign: TextAlign.center,
+              text: app.name,
+            ),
+          ],
+        ),
       ),
     );
   }
