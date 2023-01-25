@@ -93,10 +93,14 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
-          Wrap(
-            spacing: 24,
-            runSpacing: 8,
-            children: openedApps!.map((app) => ApplicationCard(app: app)).toList(),
+          Flexible(
+            child: SingleChildScrollView(
+              child: Wrap(
+                spacing: 24,
+                runSpacing: 8,
+                children: openedApps!.map((app) => ApplicationCard(app: app)).toList(),
+              ),
+            ),
           ),
         ],
       ),
