@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="generator" content="made with love by dartdoc 6.0.0">
+  <meta name="generator" content="made with love by dartdoc 6.1.5">
   <meta name="description" content="client_store API docs, for the Dart programming language.">
   <title>client_store - Dart API docs</title>
 
@@ -12,7 +12,7 @@
   
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" rel="stylesheet">
   
   <link rel="stylesheet" href="static-assets/github.css?v1">
   <link rel="stylesheet" href="static-assets/styles.css?v1">
@@ -22,12 +22,12 @@
 </head>
 
 
-<body data-base-href="" data-using-base-href="false">
+<body data-base-href="" data-using-base-href="false" class="light-theme">
 
 <div id="overlay-under-drawer"></div>
 
 <header id="title">
-  <button id="sidenav-left-toggle" type="button">&nbsp;</button>
+  <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li class="self-crumb">client_store package</li>
   </ol>
@@ -35,10 +35,16 @@
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
+  <div class="toggle" id="theme-button">
+    <label for="theme">
+      <input type="checkbox" id="theme" value="light-theme">
+      <span class="material-symbols-outlined">
+        brightness_4
+      </span>
+    </label>
+  </div>
 </header>
-
 <main>
-
 
   <div id="dartdoc-main-content" class="main-content">
       
@@ -51,9 +57,10 @@
 <a href="https://github.com/lenra-io/client-store/network/members"><img src="https://img.shields.io/github/forks/lenra-io/client-store.svg?style=for-the-badge" alt="Forks"></a>
 <a href="https://github.com/lenra-io/client-store/stargazers"><img src="https://img.shields.io/github/stars/lenra-io/client-store.svg?style=for-the-badge" alt="Stargazers"></a>
 <a href="https://github.com/lenra-io/client-store/issues"><img src="https://img.shields.io/github/issues/lenra-io/client-store.svg?style=for-the-badge" alt="Issues"></a>
-<a href="https://github.com/lenra-io/client-store/blob/master/LICENSE"><img src="https://img.shields.io/github/license/lenra-io/client-store.svg?style=for-the-badge" alt="GPL License"></a></p><!-- PROJECT LOGO --><br>
+<a href="https://github.com/lenra-io/client-store/blob/master/LICENSE"><img src="https://img.shields.io/github/license/lenra-io/client-store.svg?style=for-the-badge" alt="GPL License"></a></p><!-- PROJECT LOGO -->
 <div align="center">
-<p></p><h3 align="center">Client Store</h3><p></p><p align="center">
+<h3 align="center">Client Store</h3>
+<p align="center">
 The Lenra Client Store in Flutter.
 <br>
 <br>
@@ -61,9 +68,11 @@ The Lenra Client Store in Flutter.
 ·
 <a href="https://github.com/lenra-io/client-store/issues">Request Feature</a>
 </p>
-</div><div style="text-align: justify">
+</div>
+<div style="text-align: justify">
 The Client Store repository is the main entrypoint of Lenra to access an application when not considering the <a href="https://github.com/lenra-io/dev-tools">devtools</a>. For the moment, you can only access an application by entering its link into your browser but the goal of this repository is to provide a Store of applications so that you could browse and find the applications you need. app.lenra.io is actually this repository running on our servers.
-</div><!-- GETTING STARTED -->
+</div>
+<!-- GETTING STARTED -->
 <h2 id="prerequisites">Prerequisites</h2>
 <ul>
 <li><a href="https://flutter.dev/docs/get-started/install">flutter</a> + <a href="https://flutter.dev/docs/get-started/web">web setup</a></li>
@@ -86,7 +95,7 @@ Don't forget to give the project a star if you liked it! Thanks again!</p><p ali
 <p>TODO
 Distributed under the <strong>GPL</strong> License. See <a href="./LICENSE">LICENSE</a> for more information.</p><p align="right">(<a href="#top">back to top</a>)</p><!-- CONTACT -->
 <h2 id="contact">Contact</h2>
-<p>Lenra - <a href="https://twitter.com/lenra_dev">@lenra_dev</a> - contact@lenra.io</p>
+<p>Lenra - <a href="https://twitter.com/lenra_dev">@lenra_dev</a> - <a href="mailto:contact@lenra.io">contact@lenra.io</a></p>
 <p>Project Link: <a href="https://github.com/lenra-io/client-store">https://github.com/lenra-io/client-store</a></p><p align="right">(<a href="#top">back to top</a>)</p><!-- MARKDOWN LINKS & IMAGES --><!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 </section>
 
@@ -150,6 +159,20 @@ Distributed under the <strong>GPL</strong> License. See <a href="./LICENSE">LICE
 <dd>
 </dd>
 
+          <dt id="url_strategy_non_web">
+  <span class="name"><a href="file-___home_runner_work_client_client_lib_navigation_url_strategy_url_strategy_non_web/file-___home_runner_work_client_client_lib_navigation_url_strategy_url_strategy_non_web-library.html">url_strategy_non_web</a></span> 
+
+</dt>
+<dd>
+</dd>
+
+          <dt id="url_strategy_web">
+  <span class="name"><a href="file-___home_runner_work_client_client_lib_navigation_url_strategy_url_strategy_web/file-___home_runner_work_client_client_lib_navigation_url_strategy_url_strategy_web-library.html">url_strategy_web</a></span> 
+
+</dt>
+<dd>
+</dd>
+
         </dl>
       </section>
 
@@ -178,6 +201,8 @@ Distributed under the <strong>GPL</strong> License. See <a href="./LICENSE">LICE
       <li><a href="file-___home_runner_work_client_client_lib_views_store_page_logout_button/file-___home_runner_work_client_client_lib_views_store_page_logout_button-library.html">logout_button</a></li>
       <li><a href="file-___home_runner_work_client_client_lib_main/file-___home_runner_work_client_client_lib_main-library.html">main</a></li>
       <li><a href="file-___home_runner_work_client_client_lib_navigation_store_navigator/file-___home_runner_work_client_client_lib_navigation_store_navigator-library.html">store_navigator</a></li>
+      <li><a href="file-___home_runner_work_client_client_lib_navigation_url_strategy_url_strategy_non_web/file-___home_runner_work_client_client_lib_navigation_url_strategy_url_strategy_non_web-library.html">url_strategy_non_web</a></li>
+      <li><a href="file-___home_runner_work_client_client_lib_navigation_url_strategy_url_strategy_web/file-___home_runner_work_client_client_lib_navigation_url_strategy_url_strategy_web-library.html">url_strategy_web</a></li>
 </ol>
 
   </div>

@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the main function from the main library, for the Dart programming language.">
-  <title>main function - main library - Dart API</title>
+  <meta name="description" content="API docs for the setUrlStrategyTo function from the url_strategy_web library, for the Dart programming language.">
+  <title>setUrlStrategyTo function - url_strategy_web library - Dart API</title>
 
 
   
@@ -29,10 +29,10 @@
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../index.html">client_store</a></li>
-    <li><a href="../file-___home_runner_work_client_client_lib_main/file-___home_runner_work_client_client_lib_main-library.html">main</a></li>
-    <li class="self-crumb">main function</li>
+    <li><a href="../file-___home_runner_work_client_client_lib_navigation_url_strategy_url_strategy_web/file-___home_runner_work_client_client_lib_navigation_url_strategy_url_strategy_web-library.html">url_strategy_web</a></li>
+    <li class="self-crumb">setUrlStrategyTo function</li>
   </ol>
-  <div class="self-name">main</div>
+  <div class="self-name">setUrlStrategyTo</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -49,7 +49,7 @@
 
   <div id="dartdoc-main-content" class="main-content">
       <div>
-<h1><span class="kind-function">main</span> function 
+<h1><span class="kind-function">setUrlStrategyTo</span> function 
     <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
  
 </h1></div>
@@ -58,7 +58,8 @@
         
 
 <span class="returntype">void</span>
-<span class="name ">main</span>(<wbr>)
+<span class="name ">setUrlStrategyTo</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="setUrlStrategyTo-param-strategyName"><span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">strategyName</span></span></li>
+</ol>)
 
         
 
@@ -69,34 +70,21 @@
     
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">void main() async {
-  &#47;&#47; FROM : https:&#47;&#47;stackoverflow.com&#47;a&#47;64634042
-  &#47;&#47; configureApp();
+  <pre class="language-dart"><code class="language-dart">void setUrlStrategyTo(String strategyName) {
+  UrlStrategy strategy;
 
-  setUrlStrategyTo(&#39;path&#39;);
-
-  Logger.root.level = Level.WARNING;
-  Logger.root.onRecord.listen((record) {
-    &#47;&#47; ignore: avoid_print
-    print(&#39;${record.level.name}: ${record.time}: ${record.message}&#39;);
-  });
-
-  debugPrint(&quot;Starting main app[debugPrint]: ${Config.instance.application}&quot;);
-  &#47;&#47; ignore: todo
-  &#47;&#47; TODO: Récupération de variables d&#39;environnement ne doit pas marcher
-  const environment = String.fromEnvironment(&#39;ENVIRONMENT&#39;);
-
-  if (environment == &quot;production&quot; || environment == &quot;staging&quot;) {
-    const sentryDsn = String.fromEnvironment(&#39;SENTRY_CLIENT_DSN&#39;);
-    await SentryFlutter.init(
-      (options) =&gt; options
-        ..dsn = sentryDsn
-        ..environment = environment,
-      appRunner: () =&gt; runApp(const Store()),
-    );
-  } else {
-    runApp(const Store());
+  switch (strategyName) {
+    case &#39;hash&#39;:
+      strategy = const HashUrlStrategy();
+      break;
+    case &#39;path&#39;:
+      strategy = PathUrlStrategy();
+      break;
+    default:
+      throw Exception(&#39;Unknown URL strategy: $strategyName&#39;);
   }
+
+  setUrlStrategy(strategy);
 }</code></pre>
 </section>
 
@@ -112,22 +100,20 @@
 
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
   <li><a href="../index.html">client_store</a></li>
-  <li><a href="../file-___home_runner_work_client_client_lib_main/file-___home_runner_work_client_client_lib_main-library.html">main</a></li>
-  <li class="self-crumb">main function</li>
+  <li><a href="../file-___home_runner_work_client_client_lib_navigation_url_strategy_url_strategy_web/file-___home_runner_work_client_client_lib_navigation_url_strategy_url_strategy_web-library.html">url_strategy_web</a></li>
+  <li class="self-crumb">setUrlStrategyTo function</li>
 </ol>
 
 
-    <h5>main library</h5>
+    <h5>url_strategy_web library</h5>
     <ol>
-      <li class="section-title"><a href="../file-___home_runner_work_client_client_lib_main/file-___home_runner_work_client_client_lib_main-library.html#classes">Classes</a></li>
-        <li><a href="../file-___home_runner_work_client_client_lib_main/Store-class.html">Store</a></li>
 
 
 
 
 
-      <li class="section-title"><a href="../file-___home_runner_work_client_client_lib_main/file-___home_runner_work_client_client_lib_main-library.html#functions">Functions</a></li>
-        <li><a href="../file-___home_runner_work_client_client_lib_main/main.html">main</a></li>
+      <li class="section-title"><a href="../file-___home_runner_work_client_client_lib_navigation_url_strategy_url_strategy_web/file-___home_runner_work_client_client_lib_navigation_url_strategy_url_strategy_web-library.html#functions">Functions</a></li>
+        <li><a href="../file-___home_runner_work_client_client_lib_navigation_url_strategy_url_strategy_web/setUrlStrategyTo.html">setUrlStrategyTo</a></li>
 
 
 
