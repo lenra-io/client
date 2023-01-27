@@ -1,17 +1,17 @@
-import 'package:flutter_web_plugins/flutter_web_plugins.dart';
+import 'package:flutter_web_plugins/url_strategy.dart';
 
-void setUrlStrategyTo(String strategy_name) {
-  dynamic strategy;
+void setUrlStrategyTo(String strategyName) {
+  UrlStrategy strategy;
 
-  switch (strategy_name) {
+  switch (strategyName) {
     case 'hash':
-      strategy = setHashUrlStrategy();
+      strategy = const HashUrlStrategy();
       break;
     case 'path':
-      strategy = setPathUrlStrategy();
+      strategy = PathUrlStrategy();
       break;
     default:
-      throw Exception('Unknown URL strategy: $strategy');
+      throw Exception('Unknown URL strategy: $strategyName');
   }
 
   setUrlStrategy(strategy);
