@@ -80,6 +80,7 @@ Widget build(BuildContext context) {
   return ElevatedButton(
     onPressed: () =&gt; context.read&lt;AuthModel&gt;().logout().catchError((error) {
       logger.warning(error);
+      return error;
     }),
     child: const Text(&#39;Logout&#39;),
   );

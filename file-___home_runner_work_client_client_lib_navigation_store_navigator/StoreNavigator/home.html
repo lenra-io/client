@@ -67,19 +67,22 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static GoRoute home = GoRoute(
-  name: &quot;home&quot;,
-  path: &quot;home&quot;,
-  redirect: (context, state) =&gt; Guard.guards(context, [
-    Guard.checkAuthenticated,
-    Guard.checkCguAccepted,
-    Guard.checkIsUser,
-  ]),
-  pageBuilder: (context, state) =&gt; NoTransitionPage(
-    child: const SafeArea(
-      child: HomePage(),
-    ),
-  ),
-);</code></pre>
+    name: &quot;home&quot;,
+    path: &quot;&#47;&quot;,
+    redirect: (context, state) =&gt; Guard.guards(context, [
+          Guard.checkAuthenticated,
+          Guard.checkCguAccepted,
+          Guard.checkIsUser,
+        ]),
+    pageBuilder: (context, state) =&gt; NoTransitionPage(
+          child: const SafeArea(
+            child: HomePage(),
+          ),
+        ),
+    routes: [
+      appInvitation,
+      app,
+    ]);</code></pre>
 </section>
 
 
@@ -125,7 +128,6 @@
           <li><a href="../../file-___home_runner_work_client_client_lib_navigation_store_navigator/StoreNavigator/app.html">app</a></li>
           <li><a href="../../file-___home_runner_work_client_client_lib_navigation_store_navigator/StoreNavigator/appInvitation.html">appInvitation</a></li>
           <li><a href="../../file-___home_runner_work_client_client_lib_navigation_store_navigator/StoreNavigator/home.html">home</a></li>
-          <li><a href="../../file-___home_runner_work_client_client_lib_navigation_store_navigator/StoreNavigator/root.html">root</a></li>
           <li><a href="../../file-___home_runner_work_client_client_lib_navigation_store_navigator/StoreNavigator/router.html">router</a></li>
 
         <li class="section-title"><a href="../../file-___home_runner_work_client_client_lib_navigation_store_navigator/StoreNavigator-class.html#static-methods">Static methods</a></li>
