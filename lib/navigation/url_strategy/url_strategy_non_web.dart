@@ -1,4 +1,1 @@
-
-void setUrlStrategyTo(String strategy_name) {
-  return null;
-}
+void setUrlStrategyTo(String strategyName) {}
