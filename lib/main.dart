@@ -12,10 +12,13 @@ import 'package:lenra_components/theme/lenra_theme_data.dart';
 import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:client_store/navigation/url_strategy/url_strategy.dart' show setUrlStrategyTo;
 
 void main() async {
   // FROM : https://stackoverflow.com/a/64634042
   // configureApp();
+
+  setUrlStrategyTo('path');
 
   Logger.root.level = Level.WARNING;
   Logger.root.onRecord.listen((record) {
