@@ -65,7 +65,7 @@ class Store extends StatelessWidget {
           title: 'Lenra',
           theme: ThemeData(
             visualDensity: VisualDensity.standard,
-            textTheme: TextTheme(bodyText2: themeData.lenraTextThemeData.bodyText),
+            textTheme: TextTheme(bodyMedium: themeData.lenraTextThemeData.bodyText),
             scaffoldBackgroundColor: LenraColorThemeData.lenraWhite,
           ),
         ),

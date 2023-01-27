@@ -13,6 +13,7 @@ class LogoutButton extends StatelessWidget {
     return ElevatedButton(
       onPressed: () => context.read<AuthModel>().logout().catchError((error) {
         logger.warning(error);
+        return error;
       }),
       child: const Text('Logout'),
     );
