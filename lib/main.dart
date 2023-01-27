@@ -32,7 +32,7 @@ void main() async {
   const environment = String.fromEnvironment('ENVIRONMENT');
 
   if (environment == "production" || environment == "staging") {
-    const sentryDsn = String.fromEnvironment('SENTRY_CLIENT_DSN');
+    String sentryDsn = Config.instance.sentryDsn;
     await SentryFlutter.init(
       (options) => options
         ..dsn = sentryDsn
