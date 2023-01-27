@@ -5,7 +5,7 @@ on:
       - beta
 
 env:
-  flutter_version: "3.3.x"
+  flutter_version: "3.7.x"
 
 permissions:
   contents: write
@@ -17,7 +17,7 @@ jobs:
       - name: Checkout 🛎️
         uses: actions/checkout@v3
 
-      - uses: subosito/flutter-action@v1.5.3
+      - uses: subosito/flutter-action@v2
         with:
           flutter-version: ${{ env.flutter_version }}
 
