@@ -42,40 +42,19 @@ class StoreNavigator extends CommonNavigator {
   );
 
   static GoRoute home = GoRoute(
-    name: "home",
-    path: "home",
-    redirect: (context, state) => Guard.guards(context, [
-      Guard.checkAuthenticated,
-      Guard.checkCguAccepted,
-      Guard.checkIsUser,
-    ]),
-    pageBuilder: (context, state) => NoTransitionPage(
-      child: const SafeArea(
-        child: HomePage(),
-      ),
-    ),
-  );
-
-  static GoRoute root = GoRoute(
-      name: "root",
+      name: "home",
       path: "/",
-      pageBuilder: (context, state) {
-        return NoTransitionPage(
-          key: state.pageKey,
-          child: Builder(builder: (context) {
-            if (GoRouter.of(context).location == "/") {
-              WidgetsBinding.instance.addPostFrameCallback(((_) {
-                router.goNamed(home.name!);
-              }));
-            }
-            return Container();
-          }),
-        );
-      },
+      redirect: (context, state) => Guard.guards(context, [
+            Guard.checkAuthenticated,
+            Guard.checkCguAccepted,
+            Guard.checkIsUser,
+          ]),
+      pageBuilder: (context, state) => NoTransitionPage(
+            child: const SafeArea(
+              child: HomePage(),
+            ),
+          ),
       routes: [
-        CommonNavigator.authRoutes,
-        // Onboarding & other pages
-        home,
         appInvitation,
         app,
       ]);
@@ -83,7 +62,12 @@ class StoreNavigator extends CommonNavigator {
   static String buildAppRoute(String appName) => "/app/$appName";
 
   static final GoRouter router = GoRouter(
-    routes: [root],
+    routes: [
+      CommonNavigator.authRoutes,
+      // Onboarding & other pages
+
+      home,
+    ],
   );
 }
 

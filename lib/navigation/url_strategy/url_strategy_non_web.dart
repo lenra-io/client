@@ -1,0 +1,1 @@
+void setUrlStrategyTo(String strategyName) {}
