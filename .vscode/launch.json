@@ -5,14 +5,17 @@
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Run Web Dev",
+            "name": "Flutter: Attach to Device",
+            "type": "dart",
+            "request": "attach"
+        },
+        {
+            "name": "Run Dev",
             "program": "lib/main.dart",
             "request": "launch",
             "flutterMode": "debug",
             "type": "dart",
             "args": [
-                "-d",
-                "chrome",
                 "--web-port",
                 "10000",
                 "--dart-define=LENRA_SERVER_URL=http://localhost:4000"
