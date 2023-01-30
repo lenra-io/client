@@ -5,11 +5,13 @@ ENV LENRA_SERVER_URL=${LENRA_SERVER_URL:-'http://localhost:4000'}
 
 USER 0
 
-RUN chown -R 1001:0 /app
+RUN rm -Rf /app/* && \
+    chown -R 1001:0 /app
 
 USER 1001
 
 COPY entrypoint.sh /entrypoint.sh
+COPY nginx.conf /opt/bitnami/nginx/conf/server_blocks/
 
 COPY --chown=1001:0 build/web /app
 

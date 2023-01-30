@@ -1,3 +1,4 @@
 **
 !/build/web/**
 !/entrypoint.sh
+!/nginx.conf
