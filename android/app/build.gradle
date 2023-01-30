@@ -26,6 +26,7 @@ apply plugin: 'kotlin-android'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
+    // Old value was `flutter.compileSdkVersion` which comes from the `flutter-directory/packages/flutter_tools/gradle/flutter.gradle` file.
     compileSdkVersion 33
     ndkVersion flutter.ndkVersion
 
