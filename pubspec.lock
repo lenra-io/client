@@ -21,10 +21,10 @@ packages:
     dependency: transitive
     description:
       name: archive
-      sha256: ed7cc591a948744994714375caf9a2ce89e1d82e8243997c8a2994d57181c212
+      sha256: d6347d54a2d8028e0437e3c099f66fdb8ae02c4720c1e7534c9f24c10351f85d
       url: "https://pub.dev"
     source: hosted
-    version: "3.3.5"
+    version: "3.3.6"
   args:
     dependency: transitive
     description:
@@ -109,8 +109,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "v1.0.0-beta.33"
-      resolved-ref: "09cefae3eab693474a5abe4c301f34bb2624d2a4"
+      ref: "v1.0.0-beta.34"
+      resolved-ref: f136cf14abff4f5100cd184bf964e0d6072b2a23
       url: "git@github.com:lenra-io/client-common.git"
     source: git
     version: "1.0.0"
@@ -382,8 +382,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "v1.0.0-beta.105"
-      resolved-ref: ad638b6ec8024ede5834449e10e23a26de999780
+      ref: "v1.0.0-beta.107"
+      resolved-ref: "8d7eebd9d3826420ed007e55172c03626d6f13f9"
       url: "git@github.com:lenra-io/lenra_ui_runner.git"
     source: git
     version: "0.0.0"
