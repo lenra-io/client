@@ -12,10 +12,13 @@ import 'package:lenra_components/theme/lenra_theme_data.dart';
 import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
+import 'package:client_store/navigation/url_strategy/url_strategy.dart' show setUrlStrategyTo;
 
 void main() async {
   // FROM : https://stackoverflow.com/a/64634042
   // configureApp();
+
+  setUrlStrategyTo('path');
 
   Logger.root.level = Level.WARNING;
   Logger.root.onRecord.listen((record) {
@@ -29,7 +32,7 @@ void main() async {
   const environment = String.fromEnvironment('ENVIRONMENT');
 
   if (environment == "production" || environment == "staging") {
-    const sentryDsn = String.fromEnvironment('SENTRY_CLIENT_DSN');
+    String sentryDsn = Config.instance.sentryDsn;
     await SentryFlutter.init(
       (options) => options
         ..dsn = sentryDsn
@@ -62,7 +65,7 @@ class Store extends StatelessWidget {
           title: 'Lenra',
           theme: ThemeData(
             visualDensity: VisualDensity.standard,
-            textTheme: TextTheme(bodyText2: themeData.lenraTextThemeData.bodyText),
+            textTheme: TextTheme(bodyMedium: themeData.lenraTextThemeData.bodyText),
             scaffoldBackgroundColor: LenraColorThemeData.lenraWhite,
           ),
         ),
