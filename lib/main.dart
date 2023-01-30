@@ -1,10 +1,14 @@
+import 'dart:developer' as developer;
+
 import 'package:client_common/config/config.dart';
 import 'package:client_common/models/auth_model.dart';
 import 'package:client_common/models/build_model.dart';
 import 'package:client_common/models/cgu_model.dart';
 import 'package:client_common/models/store_model.dart';
 import 'package:client_common/models/user_application_model.dart';
-import 'package:client_store/navigation/store_navigator.dart';
+import 'package:client_store/android_notif.dart';
+import 'package:client_store/local_notif.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:lenra_components/theme/lenra_color_theme_data.dart';
 import 'package:lenra_components/theme/lenra_theme.dart';
@@ -13,15 +17,23 @@ import 'package:logging/logging.dart';
 import 'package:provider/provider.dart';
 import 'package:sentry_flutter/sentry_flutter.dart';
 
+import 'navigation/store_navigator.dart';
+
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   // FROM : https://stackoverflow.com/a/64634042
   // configureApp();
 
   Logger.root.level = Level.WARNING;
   Logger.root.onRecord.listen((record) {
     // ignore: avoid_print
-    print('${record.level.name}: ${record.time}: ${record.message}');
+    developer.log('${record.level.name}: ${record.time}: ${record.message}');
   });
+
+  if (defaultTargetPlatform == TargetPlatform.android) {
+    await LocalNotif.init();
+    await AndroidNotif.init();
+  }
 
   debugPrint("Starting main app[debugPrint]: ${Config.instance.application}");
   // ignore: todo

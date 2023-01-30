@@ -2,6 +2,7 @@ import 'package:client_common/api/response_models/app_response.dart';
 import 'package:client_common/models/auth_model.dart';
 import 'package:client_common/models/user_application_model.dart';
 import 'package:client_common/navigator/common_navigator.dart';
+import 'package:client_store/android_notif.dart';
 import 'package:client_store/navigation/store_navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:lenra_components/component/lenra_dropdown_button.dart';
@@ -23,6 +24,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   void initState() {
+    debugPrint("AndroidNotif.init()");
+
     context.read<UserApplicationModel>().getAppsUserOpened().then((value) {
       setState(() {
         openedApps = value;
@@ -77,6 +80,12 @@ class _HomePageState extends State<HomePage> {
                             CommonNavigator.go(context, CommonNavigator.profile);
                           },
                           child: const Text("Profile"),
+                        ),
+                        InkWell(
+                          onTap: () {
+                            AndroidNotif.reregisterApp(context);
+                          },
+                          child: const Text("Register UnifiedPush"),
                         ),
                         InkWell(
                           onTap: () {
