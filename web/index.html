@@ -40,6 +40,13 @@
   <meta name="sentry-client-dsn" content="${SENTRY_CLIENT_DSN}" />
 
   <script>
+    const regex = /^(https?:\/\/[^/]+\/)#\/(.*)$/;
+    if (regex.test(window.location.href)) {
+      window.location.href = window.location.href.replace(regex, (_, g1, g2) => `${g1}${g2}`);
+    }
+  </script>
+
+  <script>
     // The value below is injected by flutter build, do not touch.
     var serviceWorkerVersion = null;
   </script>
