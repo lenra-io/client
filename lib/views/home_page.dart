@@ -2,8 +2,11 @@ import 'package:client_common/api/response_models/app_response.dart';
 import 'package:client_common/models/auth_model.dart';
 import 'package:client_common/models/user_application_model.dart';
 import 'package:client_common/navigator/common_navigator.dart';
+import 'package:client_common/navigator/guard.dart';
+import 'package:client_store/models/navigation_model.dart';
 import 'package:client_store/navigation/store_navigator.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lenra_components/component/lenra_dropdown_button.dart';
 import 'package:lenra_components/component/lenra_text.dart';
 import 'package:lenra_components/lenra_components.dart';
@@ -93,6 +96,37 @@ class _HomePageState extends State<HomePage> {
               ],
             ),
           ),
+          LenraFlex(
+            children: [
+              LenraButton(
+                text: "Add test route",
+                onPressed: () {
+                  GoRoute test = GoRoute(
+                    name: "appTest",
+                    path: "/app/name/test",
+                    redirect: (context, state) => Guard.guards(context, [
+                      Guard.checkAuthenticated,
+                      Guard.checkCguAccepted,
+                      Guard.checkIsUser,
+                    ]),
+                    pageBuilder: (context, state) => NoTransitionPage(
+                      child: const SafeArea(
+                        child: Text("App Test"),
+                      ),
+                    ),
+                  );
+
+                  context.read<NavigationModel>().addTestRoute(test);
+                },
+              ),
+              LenraButton(
+                text: "Navigate to app routes",
+                onPressed: () {
+                  CommonNavigator.goPath(context, "/app/name/test");
+                },
+              ),
+            ],
+          ),
           Flexible(
             child: SingleChildScrollView(
               child: Wrap(
@@ -154,4 +188,16 @@ class ApplicationCard extends StatelessWidget {
       ),
     );
   }
+}
+
+class NoTransitionPage extends CustomTransitionPage {
+  NoTransitionPage({required Widget child, LocalKey? key})
+      : super(
+          child: child,
+          key: key,
+          transitionDuration: Duration.zero,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return child;
+          },
+        );
 }
