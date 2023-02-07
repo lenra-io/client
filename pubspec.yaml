@@ -17,16 +17,16 @@ dependencies:
     git:
       url: git@github.com:lenra-io/client-common.git
       # ref: v1.0.0-beta.32
-      ref: up-notif
+      ref: up-notify
   lenra_ui_runner:
     git:
       url: git@github.com:lenra-io/lenra_ui_runner.git
       # ref: v1.0.0-beta.104
-      ref: up-notify
+      ref: up-notif
   lenra_components:
     git:
       url: git@github.com:lenra-io/lenra_components.git
-      ref: v1.0.0-beta.51
+      ref: v1.0.0-beta.52
   flutter_local_notifications: ^13.0.0
   platform_device_id: ^1.0.1
 dev_dependencies:
