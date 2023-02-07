@@ -14,7 +14,7 @@
                 "-d",
                 "chrome",
                 "--web-port",
-                "10000",
+                "10001",
                 "--dart-define=LENRA_SERVER_URL=http://localhost:4000"
             ]
         },
@@ -22,13 +22,13 @@
             "name": "Run AEmul Dev",
             "program": "lib/main.dart",
             "request": "launch",
-            "flutterMode": "debug",
+            "flutterMode": "release",
             "type": "dart",
             "args": [
                 "-d",
                 "emulator-5554",
                 "--web-port",
-                "10000",
+                "10001",
                 "--dart-define=LENRA_SERVER_URL=http://192.168.1.79:4000"
             ]
         }
