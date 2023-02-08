@@ -31,3 +31,15 @@ class NavigationModel extends ChangeNotifier {
     notifyListeners();
   }
 }
+
+class NoTransitionPage extends CustomTransitionPage {
+  NoTransitionPage({required Widget child, LocalKey? key})
+      : super(
+          child: child,
+          key: key,
+          transitionDuration: Duration.zero,
+          transitionsBuilder: (context, animation, secondaryAnimation, child) {
+            return child;
+          },
+        );
+}

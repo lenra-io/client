@@ -102,19 +102,22 @@ class _HomePageState extends State<HomePage> {
                 text: "Add test route",
                 onPressed: () {
                   GoRoute test = GoRoute(
-                    name: "appTest",
-                    path: "/app/name/test",
-                    redirect: (context, state) => Guard.guards(context, [
-                      Guard.checkAuthenticated,
-                      Guard.checkCguAccepted,
-                      Guard.checkIsUser,
-                    ]),
-                    pageBuilder: (context, state) => NoTransitionPage(
-                      child: const SafeArea(
-                        child: Text("App Test"),
-                      ),
-                    ),
-                  );
+                      name: "appTest",
+                      path: "/app/name/:path(.*)",
+                      redirect: (context, state) => Guard.guards(context, [
+                            Guard.checkAuthenticated,
+                            Guard.checkCguAccepted,
+                            Guard.checkIsUser,
+                          ]),
+                      pageBuilder: (context, state) {
+                        print("TEST");
+                        print(state.params);
+                        return NoTransitionPage(
+                          child: const SafeArea(
+                            child: Text("App Test"),
+                          ),
+                        );
+                      });
 
                   context.read<NavigationModel>().addTestRoute(test);
                 },
