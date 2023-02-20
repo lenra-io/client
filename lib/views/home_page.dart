@@ -1,10 +1,8 @@
 import 'package:client_common/api/response_models/app_response.dart';
-import 'package:client_common/models/auth_model.dart';
 import 'package:client_common/models/user_application_model.dart';
 import 'package:client_common/navigator/common_navigator.dart';
 import 'package:client_store/navigation/store_navigator.dart';
 import 'package:flutter/material.dart';
-import 'package:lenra_components/component/lenra_dropdown_button.dart';
 import 'package:lenra_components/component/lenra_text.dart';
 import 'package:lenra_components/lenra_components.dart';
 import 'package:provider/provider.dart';
@@ -58,36 +56,10 @@ class _HomePageState extends State<HomePage> {
               fillParent: true,
               children: [
                 InkWell(
-                  onTap: () {
-                    setState(() {
-                      showDropdown = true;
-                    });
-                  },
-                  child: LenraDropdownButton(
-                    icon: null,
-                    type: LenraComponentType.tertiary,
-                    text: "Menu",
-                    child: LenraFlex(
-                      spacing: 8,
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      direction: Axis.vertical,
-                      children: [
-                        InkWell(
-                          onTap: () {
-                            CommonNavigator.go(context, CommonNavigator.profile);
-                          },
-                          child: const Text("Profile"),
-                        ),
-                        InkWell(
-                          onTap: () {
-                            context.read<AuthModel>().logout().then((_) {
-                              CommonNavigator.go(context, StoreNavigator.home);
-                            });
-                          },
-                          child: const Text("Disconnect"),
-                        ),
-                      ],
-                    ),
+                  onTap: () => CommonNavigator.go(context, StoreNavigator.profile),
+                  child: Container(
+                    alignment: Alignment.center,
+                    child: const Icon(Icons.account_circle),
                   ),
                 ),
               ],

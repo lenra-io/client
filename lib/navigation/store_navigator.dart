@@ -3,6 +3,7 @@ import 'package:client_common/navigator/guard.dart';
 import 'package:client_store/views/app_page.dart';
 import 'package:client_store/views/home_page.dart';
 import 'package:client_store/views/invitation/invitation_page.dart';
+import 'package:client_store/views/profile_page/profile_page.dart';
 import 'package:flutter/widgets.dart';
 import 'package:go_router/go_router.dart';
 
@@ -16,6 +17,7 @@ class StoreNavigator extends CommonNavigator {
       Guard.checkIsUser,
     ]),
     pageBuilder: (context, state) => NoTransitionPage(
+      key: state.pageKey,
       child: SafeArea(
         child: AppPage(
           appName: state.params["appName"]!,
@@ -41,6 +43,21 @@ class StoreNavigator extends CommonNavigator {
     ),
   );
 
+  static GoRoute profile = GoRoute(
+    name: "profile",
+    path: "profile",
+    redirect: (context, state) => Guard.guards(context, [
+      Guard.checkAuthenticated,
+      Guard.checkCguAccepted,
+      Guard.checkIsUser,
+    ]),
+    pageBuilder: (context, state) => ScaleTopRightTransitionPage(
+      child: const SafeArea(
+        child: ProfilePage(),
+      ),
+    ),
+  );
+
   static GoRoute home = GoRoute(
       name: "home",
       path: "/",
@@ -54,10 +71,7 @@ class StoreNavigator extends CommonNavigator {
               child: HomePage(),
             ),
           ),
-      routes: [
-        appInvitation,
-        app,
-      ]);
+      routes: [appInvitation, app, profile]);
 
   static String buildAppRoute(String appName) => "/app/$appName";
 
@@ -71,16 +85,17 @@ class StoreNavigator extends CommonNavigator {
   );
 }
 
-class FadeInTransitionPage extends CustomTransitionPage {
-  FadeInTransitionPage({required Widget child, LocalKey? key})
+class ScaleTopRightTransitionPage extends CustomTransitionPage {
+  ScaleTopRightTransitionPage({required Widget child, LocalKey? key})
       : super(
           child: child,
           key: key,
           transitionsBuilder: (context, animation, secondaryAnimation, child) {
             // Change the opacity of the screen using a Curve based on the the animation's
             // value
-            return FadeTransition(
-              opacity: CurveTween(curve: Curves.easeInOutCirc).animate(animation),
+            return ScaleTransition(
+              alignment: Alignment.topRight,
+              scale: CurveTween(curve: Curves.easeInOutCirc).animate(animation),
               child: child,
             );
           },
