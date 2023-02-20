@@ -24,9 +24,9 @@
     The Lenra Client Store in Flutter.
     <br />
     <br />
-    <a href="https://github.com/lenra-io/client-store/issues">Report Bug</a>
+    <a href="https://github.com/lenra-io/client/issues">Report Bug</a>
     ·
-    <a href="https://github.com/lenra-io/client-store/issues">Request Feature</a>
+    <a href="https://github.com/lenra-io/client/issues">Request Feature</a>
   </p>
 </div>
 
@@ -92,22 +92,22 @@ Distributed under the **GPL** License. See [LICENSE](./LICENSE) for more informa
 
 Lenra - [@lenra_dev](https://twitter.com/lenra_dev) - contact@lenra.io
 
-Project Link: [https://github.com/lenra-io/client-store](https://github.com/lenra-io/client-store)
+Project Link: [https://github.com/lenra-io/client](https://github.com/lenra-io/client)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/lenra-io/client-store.svg?style=for-the-badge
-[contributors-url]: https://github.com/lenra-io/client-store/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/lenra-io/client-store.svg?style=for-the-badge
-[forks-url]: https://github.com/lenra-io/client-store/network/members
-[stars-shield]: https://img.shields.io/github/stars/lenra-io/client-store.svg?style=for-the-badge
-[stars-url]: https://github.com/lenra-io/client-store/stargazers
-[issues-shield]: https://img.shields.io/github/issues/lenra-io/client-store.svg?style=for-the-badge
-[issues-url]: https://github.com/lenra-io/client-store/issues
-[license-shield]: https://img.shields.io/github/license/lenra-io/client-store.svg?style=for-the-badge
-[license-url]: https://github.com/lenra-io/client-store/blob/master/LICENSE
+[contributors-shield]: https://img.shields.io/github/contributors/lenra-io/client.svg?style=for-the-badge
+[contributors-url]: https://github.com/lenra-io/client/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/lenra-io/client.svg?style=for-the-badge
+[forks-url]: https://github.com/lenra-io/client/network/members
+[stars-shield]: https://img.shields.io/github/stars/lenra-io/client.svg?style=for-the-badge
+[stars-url]: https://github.com/lenra-io/client/stargazers
+[issues-shield]: https://img.shields.io/github/issues/lenra-io/client.svg?style=for-the-badge
+[issues-url]: https://github.com/lenra-io/client/issues
+[license-shield]: https://img.shields.io/github/license/lenra-io/client.svg?style=for-the-badge
+[license-url]: https://github.com/lenra-io/client/blob/master/LICENSE
 
 
