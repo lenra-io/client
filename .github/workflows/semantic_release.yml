@@ -57,7 +57,7 @@ jobs:
       - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.WORKFLOW_GITHUB_TOKEN }}
-          DOCKER_IMAGE: lenra/client-store
+          DOCKER_IMAGE: lenra/client
         run: |
           sudo chown $USER:$USER .github/release.sh
           sudo chmod +x .github/release.sh
