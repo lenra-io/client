@@ -22,6 +22,9 @@ class ProfilePage extends StatelessWidget {
             Icons.account_circle,
             size: 64,
           ),
+          const SizedBox(
+            height: 8,
+          ),
           Text(
             context.read<AuthModel>().user?.email ?? "",
           ),
@@ -35,11 +38,12 @@ class ProfilePage extends StatelessWidget {
             "Change password",
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
-          ChangePasswordForm(),
+          const ChangePasswordForm(),
           const Divider(
             height: 32,
           ),
           LenraButton(
+            leftIcon: const Icon(Icons.logout),
             onPressed: () => context.read<AuthModel>().logout(),
             type: LenraComponentType.tertiary,
             text: "Disconnect",
