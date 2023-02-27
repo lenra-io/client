@@ -1,3 +1,4 @@
+import 'package:client_common/config/config.dart';
 import 'package:client_common/navigator/common_navigator.dart';
 import 'package:client_common/navigator/guard.dart';
 import 'package:client_store/views/app_page.dart';
@@ -6,6 +7,7 @@ import 'package:client_store/views/invitation/invitation_page.dart';
 import 'package:client_store/views/profile_page/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:lenra_ui_runner/app.dart';
 
 class StoreNavigator extends CommonNavigator {
   static GoRoute appRoutes = GoRoute(
@@ -15,10 +17,21 @@ class StoreNavigator extends CommonNavigator {
         print("APP ROUTES ROUTE");
         print(state.params);
         return NoTransitionPage(
-          child: SafeArea(
-              child: Scaffold(
-            body: Text("APP ROUTE : ${state.params}"),
-          )),
+          child: App(
+            appName: state.params["appName"]!,
+            httpEndpoint: Config.instance.httpEndpoint,
+            accessToken: "",
+            wsEndpoint: Config.instance.wsEndpoint,
+            baseRoute: "/",
+            routeWidget: LenraRoute(
+              "/${state.params['path']!}",
+              // Use UniqueKey to make sure that the LenraRoute Widget is properly reloaded with the new route when navigating.
+              key: UniqueKey(),
+            ),
+            navTo: (context, route) {
+              GoRouter.of(context).go(route);
+            },
+          ),
         );
       });
 
