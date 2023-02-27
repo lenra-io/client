@@ -17,6 +17,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.4.0"
+  animations:
+    dependency: "direct main"
+    description:
+      name: animations
+      sha256: fe8a6bdca435f718bb1dc8a11661b2c22504c6da40ef934cee8327ed77934164
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.7"
   archive:
     dependency: transitive
     description:
@@ -109,8 +117,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "v1.0.0-beta.38"
-      resolved-ref: "808b9993e82d56f7ae790e4d3647d87ca83f3a12"
+      ref: "v1.0.0-beta.40"
+      resolved-ref: "012eda03f3a0210e951bc3ac6db98d1438151c7e"
       url: "git@github.com:lenra-io/client-common.git"
     source: git
     version: "1.0.0"
@@ -390,8 +398,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "v1.0.0-beta.110"
-      resolved-ref: c7eb6da4d50ca7a3224d76711785ba3d0840ad32
+      ref: "v1.0.0-beta.113"
+      resolved-ref: "960e294045912ec24aebc48bb54a21253b9d506b"
       url: "git@github.com:lenra-io/lenra_ui_runner.git"
     source: git
     version: "0.0.0"
