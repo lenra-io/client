@@ -55,7 +55,7 @@ fi
 # build the docker image
 docker buildx build \
   --output type=image,push=true \
-  --platform "linux/amd64,linux/arm64,linux/arm" \
+  --platform "linux/amd64,linux/arm64" \
   ${tag} \
   --cache-from type=local,src=~/.docker-cache \
   --cache-to type=local,dest=~/.docker-cache \
