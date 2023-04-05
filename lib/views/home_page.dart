@@ -82,8 +82,6 @@ class _HomePageState extends State<HomePage> {
                             Guard.checkIsUser,
                           ]),
                       pageBuilder: (context, state) {
-                        print("TEST");
-                        print(state.params);
                         return NoTransitionPage(
                           child: const SafeArea(
                             child: Text("App Test"),

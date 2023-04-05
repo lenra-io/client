@@ -14,8 +14,6 @@ class StoreNavigator extends CommonNavigator {
       name: "appRoutes",
       path: ":path(.*)",
       pageBuilder: (context, state) {
-        print("APP ROUTES ROUTE");
-        print(state.params);
         return NoTransitionPage(
           child: App(
             appName: state.params["appName"]!,
@@ -47,8 +45,6 @@ class StoreNavigator extends CommonNavigator {
             Guard.checkIsUser,
           ]),
       pageBuilder: (context, state) {
-        print("APP ROUTE");
-        print(state.params);
         return NoTransitionPage(
           key: state.pageKey,
           child: SafeArea(
