@@ -1,15 +1,19 @@
 import 'package:client_common/config/config.dart';
 import 'package:client_common/models/auth_model.dart';
+import 'package:client_store/navigation/store_navigator.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lenra_ui_runner/app.dart';
+import 'package:lenra_ui_runner/io_components/lenra_route.dart';
 import 'package:lenra_ui_runner/models/app_socket_model.dart';
 import 'package:lenra_ui_runner/models/socket_model.dart';
 import 'package:provider/provider.dart';
 
 class AppPage extends StatelessWidget {
   final String appName;
+  final String path;
 
-  const AppPage({required this.appName, super.key});
+  const AppPage({required this.appName, required this.path, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +35,16 @@ class AppPage extends StatelessWidget {
         appName: appName,
         accessToken: context.watch<AuthModel>().accessToken ?? "",
         httpEndpoint: Config.instance.httpEndpoint,
+        wsEndpoint: Config.instance.wsEndpoint,
+        baseRoute: "/app/$appName",
+        routeWidget: LenraRoute(
+          "/$path",
+          // Use UniqueKey to make sure that the LenraRoute Widget is properly reloaded with the new route when navigating.
+          key: UniqueKey(),
+        ),
+        navTo: (context, route) {
+          GoRouter.of(context).go("${StoreNavigator.buildAppRoute(appName)}$route");
+        },
       ),
     );
   }

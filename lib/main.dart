@@ -4,9 +4,10 @@ import 'package:client_common/models/build_model.dart';
 import 'package:client_common/models/cgu_model.dart';
 import 'package:client_common/models/store_model.dart';
 import 'package:client_common/models/user_application_model.dart';
-import 'package:client_store/navigation/store_navigator.dart';
+import 'package:client_store/models/navigation_model.dart';
 import 'package:client_store/navigation/url_strategy/url_strategy.dart' show setUrlStrategyTo;
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import 'package:lenra_components/theme/lenra_color_theme_data.dart';
 import 'package:lenra_components/theme/lenra_theme.dart';
 import 'package:lenra_components/theme/lenra_theme_data.dart';
@@ -57,11 +58,12 @@ class Store extends StatelessWidget {
         ChangeNotifierProvider<StoreModel>(create: (context) => StoreModel()),
         ChangeNotifierProvider<CguModel>(create: (context) => CguModel()),
         ChangeNotifierProvider<UserApplicationModel>(create: (context) => UserApplicationModel()),
+        ChangeNotifierProvider<NavigationModel>(create: (context) => NavigationModel())
       ],
       builder: (BuildContext context, _) => LenraTheme(
         themeData: themeData,
         child: MaterialApp.router(
-          routerConfig: StoreNavigator.router,
+          routerConfig: context.select<NavigationModel, GoRouter>((model) => model.router),
           title: 'Lenra',
           theme: ThemeData(
             visualDensity: VisualDensity.standard,
