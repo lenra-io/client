@@ -1,5 +1,6 @@
 import 'package:client_common/config/config.dart';
 import 'package:client_common/models/auth_model.dart';
+import 'package:client_store/navigation/store_navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lenra_ui_runner/app.dart';
@@ -42,7 +43,7 @@ class AppPage extends StatelessWidget {
           key: UniqueKey(),
         ),
         navTo: (context, route) {
-          GoRouter.of(context).go(route);
+          GoRouter.of(context).go("${StoreNavigator.buildAppRoute(appName)}$route");
         },
       ),
     );

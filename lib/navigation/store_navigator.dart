@@ -8,9 +8,9 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class StoreNavigator extends CommonNavigator {
-  static GoRoute app = GoRoute(
-      name: "app",
-      path: "app/:appName/:path(.*)",
+  static GoRoute appRoutes = GoRoute(
+      name: "appRoutes",
+      path: ":path(.*)",
       redirect: (context, state) => Guard.guards(context, [
             Guard.checkAuthenticated,
             Guard.checkCguAccepted,
@@ -23,6 +23,27 @@ class StoreNavigator extends CommonNavigator {
             child: AppPage(
               appName: state.params["appName"]!,
               path: state.params['path']!,
+            ),
+          ),
+        );
+      });
+
+  static GoRoute app = GoRoute(
+      name: "app",
+      path: "app/:appName",
+      routes: [appRoutes],
+      redirect: (context, state) => Guard.guards(context, [
+            Guard.checkAuthenticated,
+            Guard.checkCguAccepted,
+            Guard.checkIsUser,
+          ]),
+      pageBuilder: (context, state) {
+        return NoTransitionPage(
+          key: state.pageKey,
+          child: SafeArea(
+            child: AppPage(
+              appName: state.params["appName"]!,
+              path: "/",
             ),
           ),
         );
