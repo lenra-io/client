@@ -13,7 +13,7 @@ plugins:
     - preset: conventionalcommits
   - - "@semantic-release/github"
     - assets:
-        - path: artifacts/app-release.apk
+        - path: artifacts/*/*
   - - "@semantic-release/exec"
     - publishCmd: /bin/bash -c ".github/release.sh ${nextRelease.version}"
   - - "semantic-release-export-data"
