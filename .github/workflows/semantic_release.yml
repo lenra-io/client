@@ -11,13 +11,69 @@ env:
   flutter_version: "3.7.x"
 
 jobs:
+  get-next-version:
+    name: Get next version
+    runs-on: ubuntu-20.04
+    continue-on-error: true # must be allow to fail
+    timeout-minutes: 2
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+
+      - id: get-next-version
+        name: Get next version
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npx --force -p conventional-changelog-conventionalcommits@5 -p @semantic-release/exec -p @semantic-release/git -p semantic-release-export-data -p https://github.com/Tlepel/semantic-release.git#fix-versions-share-head semantic-release --dry-run
+
+    outputs:
+      new-release-published: ${{ steps.get-next-version.outputs.new-release-published }}
+      new-release-version: ${{ steps.get-next-version.outputs.new-release-version }}
+
+  android_build:
+    name: Android Build
+    needs: [get-next-version]
+    runs-on: ubuntu-latest
+    env:
+      VERSION: ${{ needs.get-next-version.outputs.new-release-version }}
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install Flutter & Dependencies
+        uses: subosito/flutter-action@v1.5.3
+        with:
+          flutter-version: ${{ env.flutter_version }}
+      - name: Setup yq
+        id: setup-yq
+        uses: shiipou/setup-yq-action@stable
+      - name: Update pubspec version
+        run: yq -i '.version = "$VERSION"' pubspec.yaml
+      - name: Flutter Build APK
+        run: flutter build apk --no-tree-shake-icons --dart-define=LENRA_SERVER_URL=https://api.lenra.io
+      - name: Upload APK artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: app-release
+          path: build/app/outputs/flutter-apk/app-release.apk
+
   release:
     name: Release
+    needs: [android_build]
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@v2
+      - name: download-artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: artifacts/
       - name: Docker Login
         uses: docker/login-action@v1
         with:
