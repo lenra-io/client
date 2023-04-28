@@ -52,7 +52,7 @@ jobs:
         id: setup-yq
         uses: shiipou/setup-yq-action@stable
       - name: Update pubspec version
-        run: yq -i ".version = \"$VERSION\"" pubspec.yaml
+        run: yq -i ".version = \"${{ env.VERSION }}\"" pubspec.yaml
       - name: Flutter Build APK
         run: flutter build apk --no-tree-shake-icons --dart-define=LENRA_SERVER_URL=https://api.lenra.io
       - name: Upload APK artifact
