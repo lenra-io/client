@@ -16,3 +16,4 @@ plugins:
         - path: artifacts/app-release.apk
   - - "@semantic-release/exec"
     - publishCmd: /bin/bash -c ".github/release.sh ${nextRelease.version}"
+  - - "semantic-release-export-data"

@@ -41,6 +41,7 @@ jobs:
     env:
       VERSION: ${{ needs.get-next-version.outputs.new-release-version }}
     timeout-minutes: 10
+    if: ${{ needs.get-next-version.outputs.new-release-published }}
     steps:
       - name: Checkout
         uses: actions/checkout@v2
