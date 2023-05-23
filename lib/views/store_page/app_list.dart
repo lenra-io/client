@@ -11,6 +11,7 @@ class AppList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print("AppList.build");
     StoreModel storeModel = context.watch<StoreModel>();
     if (storeModel.fetchApplicationsStatus.hasError()) {
       return Error(storeModel.fetchApplicationsStatus.error!);
@@ -22,7 +23,7 @@ class AppList extends StatelessWidget {
           return AppButton(
             appInfo: appInfo,
             onPressed: () {
-              CommonNavigator.goPath(context, StoreNavigator.buildAppRoute(appInfo.serviceName));
+              CommonNavigator.goPath(context, StoreNavigator.buildAppRoute(appInfo.serviceName!));
             },
           );
         }).toList(),
