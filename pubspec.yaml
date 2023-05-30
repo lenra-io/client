@@ -27,6 +27,7 @@ dependencies:
       url: git@github.com:lenra-io/lenra_components.git
       ref: v1.0.0-beta.52
   animations: ^2.0.7
+  url_launcher: ^6.1.11
 dev_dependencies:
   flutter_test:
     sdk: flutter
