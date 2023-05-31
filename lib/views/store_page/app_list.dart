@@ -11,7 +11,6 @@ class AppList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("AppList.build");
     StoreModel storeModel = context.watch<StoreModel>();
     if (storeModel.fetchApplicationsStatus.hasError()) {
       return Error(storeModel.fetchApplicationsStatus.error!);
