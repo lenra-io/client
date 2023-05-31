@@ -112,14 +112,14 @@ class ApplicationCard extends StatelessWidget {
                 child: LenraText(
                   style: themeData.lenraTextThemeData.headline1,
                   textAlign: TextAlign.center,
-                  text: app.name![0].toUpperCase(),
+                  text: app.name[0].toUpperCase(),
                 ),
               ),
             ),
             LenraText(
               style: themeData.lenraTextThemeData.bodyText,
               textAlign: TextAlign.center,
-              text: app.name!,
+              text: app.name,
             ),
           ],
         ),

@@ -23,7 +23,7 @@ class AppList extends StatelessWidget {
           return AppButton(
             appInfo: appInfo,
             onPressed: () {
-              CommonNavigator.goPath(context, StoreNavigator.buildAppRoute(appInfo.serviceName!));
+              CommonNavigator.goPath(context, StoreNavigator.buildAppRoute(appInfo.serviceName));
             },
           );
         }).toList(),

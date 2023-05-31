@@ -33,7 +33,7 @@ class AppButton extends StatelessWidget {
                         size: 64,
                       ),
                     ),
-                    Text(appInfo.name!)
+                    Text(appInfo.name)
                   ],
                 ),
               ),
