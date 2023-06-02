@@ -8,6 +8,7 @@ import 'package:lenra_ui_runner/io_components/lenra_route.dart';
 import 'package:lenra_ui_runner/models/app_socket_model.dart';
 import 'package:lenra_ui_runner/models/socket_model.dart';
 import 'package:provider/provider.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class AppPage extends StatelessWidget {
   final String appName;
@@ -43,9 +44,22 @@ class AppPage extends StatelessWidget {
           key: UniqueKey(),
         ),
         navTo: (context, route) {
-          GoRouter.of(context).go("${StoreNavigator.buildAppRoute(appName)}$route");
+          // This regex matches http:// and https:// urls
+          RegExp exp = RegExp(r"^https?://");
+          if (exp.hasMatch(route)) {
+            _launchURL(route);
+          } else {
+            GoRouter.of(context).go("${StoreNavigator.buildAppRoute(appName)}$route");
+          }
         },
       ),
     );
+  }
+}
+
+_launchURL(String url) async {
+  final Uri uri = Uri.parse(url);
+  if (!await launchUrl(uri)) {
+    throw Exception("Could not launch url: $url");
   }
 }
