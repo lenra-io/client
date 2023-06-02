@@ -68,7 +68,7 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static GoRoute appInvitation = GoRoute(
   name: &quot;app-invitation&quot;,
-  path: &quot;app&#47;invitations&#47;:uuid&quot;,
+  path: &quot;&#47;app&#47;invitations&#47;:uuid&quot;,
   redirect: (context, state) =&gt; Guard.guards(context, [
     Guard.checkAuthenticated,
     Guard.checkCguAccepted,

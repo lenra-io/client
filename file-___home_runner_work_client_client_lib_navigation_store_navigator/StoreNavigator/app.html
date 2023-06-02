@@ -68,7 +68,7 @@
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static GoRoute app = GoRoute(
   name: &quot;app&quot;,
-  path: &quot;app&#47;:appName&quot;,
+  path: &quot;&#47;app&#47;:appName&quot;,
   redirect: (context, state) =&gt; Guard.guards(context, [
     Guard.checkAuthenticated,
     Guard.checkCguAccepted,
