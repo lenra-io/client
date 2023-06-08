@@ -67,24 +67,23 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static GoRoute app = GoRoute(
-    name: &quot;app&quot;,
-    path: &quot;&#47;app&#47;:appName:path(\\&#47;?.*)&quot;,
-    redirect: (context, state) =&gt; Guard.guards(context, [
-          Guard.checkAuthenticated,
-          Guard.checkCguAccepted,
-          Guard.checkIsUser,
-        ]),
-    pageBuilder: (context, state) {
-      return NoTransitionPage(
-        key: state.pageKey,
-        child: SafeArea(
-          child: AppPage(
-            appName: state.params[&quot;appName&quot;]!,
-            path: state.params[&#39;path&#39;]!,
-          ),
-        ),
-      );
-    });</code></pre>
+  name: &quot;app&quot;,
+  path: &quot;app&#47;:appName:path(\\&#47;?.*)&quot;,
+  redirect: (context, state) =&gt; Guard.guards(context, [
+    Guard.checkAuthenticated,
+    Guard.checkCguAccepted,
+    Guard.checkIsUser,
+  ]),
+  pageBuilder: (context, state) =&gt; NoTransitionPage(
+    key: state.pageKey,
+    child: SafeArea(
+      child: AppPage(
+        appName: state.params[&quot;appName&quot;]!,
+        path: state.params[&#39;path&#39;]!,
+      ),
+    ),
+  ),
+);</code></pre>
 </section>
 
 
