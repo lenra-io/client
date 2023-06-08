@@ -21,12 +21,13 @@ dependencies:
   lenra_ui_runner:
     git:
       url: git@github.com:lenra-io/lenra_ui_runner.git
-      ref: v1.0.0-beta.114
+      ref: v1.0.0-beta.115
   lenra_components:
     git:
       url: git@github.com:lenra-io/lenra_components.git
       ref: v1.0.0-beta.52
   animations: ^2.0.7
+  url_launcher: ^6.1.11
 dev_dependencies:
   flutter_test:
     sdk: flutter

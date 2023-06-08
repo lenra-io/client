@@ -4,27 +4,29 @@ import 'package:client_store/views/app_page.dart';
 import 'package:client_store/views/home_page.dart';
 import 'package:client_store/views/invitation/invitation_page.dart';
 import 'package:client_store/views/profile_page/profile_page.dart';
-import 'package:flutter/widgets.dart';
+import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class StoreNavigator extends CommonNavigator {
   static GoRoute app = GoRoute(
-    name: "app",
-    path: "/app/:appName",
-    redirect: (context, state) => Guard.guards(context, [
-      Guard.checkAuthenticated,
-      Guard.checkCguAccepted,
-      Guard.checkIsUser,
-    ]),
-    pageBuilder: (context, state) => NoTransitionPage(
-      key: state.pageKey,
-      child: SafeArea(
-        child: AppPage(
-          appName: state.params["appName"]!,
-        ),
-      ),
-    ),
-  );
+      name: "app",
+      path: "/app/:appName:path(\\/?.*)",
+      redirect: (context, state) => Guard.guards(context, [
+            Guard.checkAuthenticated,
+            Guard.checkCguAccepted,
+            Guard.checkIsUser,
+          ]),
+      pageBuilder: (context, state) {
+        return NoTransitionPage(
+          key: state.pageKey,
+          child: SafeArea(
+            child: AppPage(
+              appName: state.params["appName"]!,
+              path: state.params['path']!,
+            ),
+          ),
+        );
+      });
 
   static GoRoute appInvitation = GoRoute(
     name: "app-invitation",

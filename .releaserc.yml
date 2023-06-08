@@ -11,6 +11,9 @@ plugins:
     - preset: conventionalcommits
   - - "@semantic-release/release-notes-generator"
     - preset: conventionalcommits
-  - "@semantic-release/github"
+  - - "@semantic-release/github"
+    - assets:
+        - path: artifacts/*/*
   - - "@semantic-release/exec"
     - publishCmd: /bin/bash -c ".github/release.sh ${nextRelease.version}"
+  - - "semantic-release-export-data"
