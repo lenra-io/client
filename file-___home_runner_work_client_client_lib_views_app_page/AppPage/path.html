@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the build method from the AppPage class, for the Dart programming language.">
-  <title>build method - AppPage class - app_page library - Dart API</title>
+  <meta name="description" content="API docs for the path property from the AppPage class, for the Dart programming language.">
+  <title>path property - AppPage class - app_page library - Dart API</title>
 
 
   
@@ -31,9 +31,9 @@
     <li><a href="../../index.html">client_store</a></li>
     <li><a href="../../file-___home_runner_work_client_client_lib_views_app_page/file-___home_runner_work_client_client_lib_views_app_page-library.html">app_page</a></li>
     <li><a href="../../file-___home_runner_work_client_client_lib_views_app_page/AppPage-class.html">AppPage</a></li>
-    <li class="self-crumb">build method</li>
+    <li class="self-crumb">path property</li>
   </ol>
-  <div class="self-name">build</div>
+  <div class="self-name">path</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -50,70 +50,23 @@
 
   <div id="dartdoc-main-content" class="main-content">
       <div>
-<h1><span class="kind-method">build</span> method 
+<h1><span class="kind-property">path</span> property 
     <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
-    <section class="multi-line-signature">
-      
-  <div>
-    <ol class="annotation-list">
-        <li>@<a href="https://api.flutter.dev/flutter/dart-core/override-constant.html">override</a></li>
-    </ol>
-  </div>
+        <section class="multi-line-signature">
+          
+          <a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a>
+          <span class="name ">path</span>
+          <div class="features"><span class="feature">final</span></div>
 
-<span class="returntype">dynamic</span>
-<span class="name ">build</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="build-param-context"><span class="type-annotation">dynamic</span> <span class="parameter-name">context</span></span></li>
-</ol>)
+        </section>
+        
 
-      
-
-    </section>
-    
-
-
-    
+        
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">@override
-Widget build(BuildContext context) {
-  return MultiProvider(
-    providers: [
-      ChangeNotifierProxyProvider&lt;AuthModel, SocketModel&gt;(
-        create: (context) =&gt; AppSocketModel(context.read&lt;AuthModel&gt;().accessToken ?? &quot;&quot;, appName),
-        update: (_, authModel, socketModel) {
-          if (socketModel == null) {
-            return AppSocketModel(authModel.accessToken ?? &quot;&quot;, appName);
-          }
-
-          (socketModel as AppSocketModel).update(authModel.accessToken ?? &quot;&quot;);
-          return socketModel;
-        },
-      ),
-    ],
-    builder: (BuildContext context, _) =&gt; App(
-      appName: appName,
-      accessToken: context.watch&lt;AuthModel&gt;().accessToken ?? &quot;&quot;,
-      httpEndpoint: Config.instance.httpEndpoint,
-      wsEndpoint: Config.instance.wsEndpoint,
-      baseRoute: &quot;&#47;app&#47;$appName&quot;,
-      routeWidget: LenraRoute(
-        &quot;&#47;$path&quot;,
-        &#47;&#47; Use UniqueKey to make sure that the LenraRoute Widget is properly reloaded with the new route when navigating.
-        key: UniqueKey(),
-      ),
-      navTo: (context, route) {
-        &#47;&#47; This regex matches http:&#47;&#47; and https:&#47;&#47; urls
-        RegExp exp = RegExp(r&quot;^https?:&#47;&#47;&quot;);
-        if (exp.hasMatch(route)) {
-          _launchURL(route);
-        } else {
-          GoRouter.of(context).go(&quot;${StoreNavigator.buildAppRoute(appName)}$route&quot;);
-        }
-      },
-    ),
-  );
-}</code></pre>
+  <pre class="language-dart"><code class="language-dart">final String path;</code></pre>
 </section>
 
 
@@ -130,7 +83,7 @@ Widget build(BuildContext context) {
   <li><a href="../../index.html">client_store</a></li>
   <li><a href="../../file-___home_runner_work_client_client_lib_views_app_page/file-___home_runner_work_client_client_lib_views_app_page-library.html">app_page</a></li>
   <li><a href="../../file-___home_runner_work_client_client_lib_views_app_page/AppPage-class.html">AppPage</a></li>
-  <li class="self-crumb">build method</li>
+  <li class="self-crumb">path property</li>
 </ol>
 
 

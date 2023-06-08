@@ -4,8 +4,8 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, user-scalable=no">
-  <meta name="description" content="API docs for the AppPage constructor from Class AppPage from the app_page library, for the Dart programming language.">
-  <title>AppPage constructor - AppPage - app_page library - Dart API</title>
+  <meta name="description" content="API docs for the router property from the NavigationModel class, for the Dart programming language.">
+  <title>router property - NavigationModel class - navigation_model library - Dart API</title>
 
 
   
@@ -29,11 +29,11 @@
   <span id="sidenav-left-toggle" class="material-symbols-outlined" role="button" tabindex="0">menu</span>
   <ol class="breadcrumbs gt-separated dark hidden-xs">
     <li><a href="../../index.html">client_store</a></li>
-    <li><a href="../../file-___home_runner_work_client_client_lib_views_app_page/file-___home_runner_work_client_client_lib_views_app_page-library.html">app_page</a></li>
-    <li><a href="../../file-___home_runner_work_client_client_lib_views_app_page/AppPage-class.html">AppPage</a></li>
-    <li class="self-crumb">AppPage const constructor</li>
+    <li><a href="../../file-___home_runner_work_client_client_lib_models_navigation_model/file-___home_runner_work_client_client_lib_models_navigation_model-library.html">navigation_model</a></li>
+    <li><a href="../../file-___home_runner_work_client_client_lib_models_navigation_model/NavigationModel-class.html">NavigationModel</a></li>
+    <li class="self-crumb">router property</li>
   </ol>
-  <div class="self-name">AppPage</div>
+  <div class="self-name">router</div>
   <form class="search navbar-right" role="search">
     <input type="text" id="search-box" autocomplete="off" disabled class="form-control typeahead" placeholder="Loading search...">
   </form>
@@ -50,25 +50,30 @@
 
   <div id="dartdoc-main-content" class="main-content">
       <div>
-<h1><span class="kind-constructor">AppPage</span> constructor 
+<h1><span class="kind-property">router</span> property 
     <a href="https://dart.dev/null-safety" class="feature feature-null-safety" title="Supports the null safety language feature.">Null safety</a>
 </h1></div>
 
-    <section class="multi-line-signature">
-      const
-      <span class="name ">AppPage</span>(<wbr><ol class="parameter-list"><li><span class="parameter" id="-param-appName">{<span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">appName</span>, </span></li>
-<li><span class="parameter" id="-param-path"><span>required</span> <span class="type-annotation"><a href="https://api.flutter.dev/flutter/dart-core/String-class.html">String</a></span> <span class="parameter-name">path</span>, </span></li>
-<li><span class="parameter" id="-param-key"><span class="type-annotation">dynamic</span> <span class="parameter-name">key</span>}</span></li>
-</ol>)
-    </section>
+        <section class="multi-line-signature">
+          
+          dynamic
+          <span class="name ">router</span>
+          <div class="features"><span class="feature">read / write</span></div>
 
-    
+        </section>
+        
 
-
-    
+        
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
-  <pre class="language-dart"><code class="language-dart">const AppPage({required this.appName, required this.path, super.key});</code></pre>
+  <pre class="language-dart"><code class="language-dart">late GoRouter router = GoRouter(
+  routes: [
+    CommonNavigator.authRoutes,
+    &#47;&#47; Onboarding &amp; other pages
+    StoreNavigator.home,
+    ...appRoutes
+  ],
+);</code></pre>
 </section>
 
 
@@ -83,33 +88,32 @@
 
 <ol class="breadcrumbs gt-separated dark hidden-l" id="sidebar-nav">
   <li><a href="../../index.html">client_store</a></li>
-  <li><a href="../../file-___home_runner_work_client_client_lib_views_app_page/file-___home_runner_work_client_client_lib_views_app_page-library.html">app_page</a></li>
-  <li><a href="../../file-___home_runner_work_client_client_lib_views_app_page/AppPage-class.html">AppPage</a></li>
-  <li class="self-crumb">AppPage const constructor</li>
+  <li><a href="../../file-___home_runner_work_client_client_lib_models_navigation_model/file-___home_runner_work_client_client_lib_models_navigation_model-library.html">navigation_model</a></li>
+  <li><a href="../../file-___home_runner_work_client_client_lib_models_navigation_model/NavigationModel-class.html">NavigationModel</a></li>
+  <li class="self-crumb">router property</li>
 </ol>
 
 
-    <h5>AppPage class</h5>
+    <h5>NavigationModel class</h5>
     <ol>
 
-        <li class="section-title"><a href="../../file-___home_runner_work_client_client_lib_views_app_page/AppPage-class.html#constructors">Constructors</a></li>
-          <li><a href="../../file-___home_runner_work_client_client_lib_views_app_page/AppPage/AppPage.html">AppPage</a></li>
+        <li class="section-title"><a href="../../file-___home_runner_work_client_client_lib_models_navigation_model/NavigationModel-class.html#constructors">Constructors</a></li>
+          <li><a href="../../file-___home_runner_work_client_client_lib_models_navigation_model/NavigationModel/NavigationModel.html">NavigationModel</a></li>
 
 
         <li class="section-title">
-          <a href="../../file-___home_runner_work_client_client_lib_views_app_page/AppPage-class.html#instance-properties">Properties</a>
+          <a href="../../file-___home_runner_work_client_client_lib_models_navigation_model/NavigationModel-class.html#instance-properties">Properties</a>
         </li>
-          <li><a href="../../file-___home_runner_work_client_client_lib_views_app_page/AppPage/appName.html">appName</a></li>
+          <li><a href="../../file-___home_runner_work_client_client_lib_models_navigation_model/NavigationModel/appRoutes.html">appRoutes</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/hashCode.html">hashCode</a></li>
-          <li><a href="../../file-___home_runner_work_client_client_lib_views_app_page/AppPage/path.html">path</a></li>
+          <li><a href="../../file-___home_runner_work_client_client_lib_models_navigation_model/NavigationModel/router.html">router</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/runtimeType.html">runtimeType</a></li>
 
-        <li class="section-title"><a href="../../file-___home_runner_work_client_client_lib_views_app_page/AppPage-class.html#instance-methods">Methods</a></li>
-          <li><a href="../../file-___home_runner_work_client_client_lib_views_app_page/AppPage/build.html">build</a></li>
+        <li class="section-title inherited"><a href="../../file-___home_runner_work_client_client_lib_models_navigation_model/NavigationModel-class.html#instance-methods">Methods</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/noSuchMethod.html">noSuchMethod</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/toString.html">toString</a></li>
 
-        <li class="section-title inherited"><a href="../../file-___home_runner_work_client_client_lib_views_app_page/AppPage-class.html#operators">Operators</a></li>
+        <li class="section-title inherited"><a href="../../file-___home_runner_work_client_client_lib_models_navigation_model/NavigationModel-class.html#operators">Operators</a></li>
           <li class="inherited"><a href="https://api.flutter.dev/flutter/dart-core/Object/operator_equals.html">operator ==</a></li>
 
 
@@ -117,7 +121,7 @@
 
 </ol>
 
-  </div><!--/.sidebar-offcanvas-left-->
+  </div><!--/.sidebar-offcanvas-->
 
   <div id="dartdoc-sidebar-right" class="sidebar sidebar-offcanvas-right">
   </div><!--/.sidebar-offcanvas-->

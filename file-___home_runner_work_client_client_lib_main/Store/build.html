@@ -85,11 +85,12 @@ Widget build(BuildContext context) {
       ChangeNotifierProvider&lt;StoreModel&gt;(create: (context) =&gt; StoreModel()),
       ChangeNotifierProvider&lt;CguModel&gt;(create: (context) =&gt; CguModel()),
       ChangeNotifierProvider&lt;UserApplicationModel&gt;(create: (context) =&gt; UserApplicationModel()),
+      ChangeNotifierProvider&lt;NavigationModel&gt;(create: (context) =&gt; NavigationModel())
     ],
     builder: (BuildContext context, _) =&gt; LenraTheme(
       themeData: themeData,
       child: MaterialApp.router(
-        routerConfig: StoreNavigator.router,
+        routerConfig: context.select&lt;NavigationModel, GoRouter&gt;((model) =&gt; model.router),
         title: &#39;Lenra&#39;,
         theme: ThemeData(
           visualDensity: VisualDensity.standard,
