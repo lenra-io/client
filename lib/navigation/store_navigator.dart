@@ -10,7 +10,7 @@ import 'package:go_router/go_router.dart';
 class StoreNavigator extends CommonNavigator {
   static GoRoute app = GoRoute(
       name: "app",
-      path: "app/:appName:path(\\/?.*)",
+      path: "/app/:appName:path(\\/?.*)",
       redirect: (context, state) => Guard.guards(context, [
             Guard.checkAuthenticated,
             Guard.checkCguAccepted,
@@ -30,7 +30,7 @@ class StoreNavigator extends CommonNavigator {
 
   static GoRoute appInvitation = GoRoute(
     name: "app-invitation",
-    path: "app/invitations/:uuid",
+    path: "/app/invitations/:uuid",
     redirect: (context, state) => Guard.guards(context, [
       Guard.checkAuthenticated,
       Guard.checkCguAccepted,
@@ -73,9 +73,19 @@ class StoreNavigator extends CommonNavigator {
               child: HomePage(),
             ),
           ),
-      routes: [appInvitation, app, profile]);
+      routes: [profile]);
 
   static String buildAppRoute(String appName) => "/app/$appName";
+
+  static final GoRouter router = GoRouter(
+    routes: [
+      CommonNavigator.authRoutes,
+      // Onboarding & other pages
+      app,
+      appInvitation,
+      home,
+    ],
+  );
 }
 
 class ScaleTopRightTransitionPage extends CustomTransitionPage {
