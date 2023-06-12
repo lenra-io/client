@@ -82,5 +82,5 @@ Remember, you should safeguard your keystore and its associated passwords carefu
 
 Just run the following command :
 ```bash
-flutter build appbundle --release
+flutter build appbundle --release --no-tree-shake-icons --dart-define=LENRA_SERVER_URL=https://api.lenra.io/ --build-name=1.0.0-beta.43 --build-number=20
 ```
