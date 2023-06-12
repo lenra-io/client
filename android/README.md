@@ -82,5 +82,5 @@ Remember, you should safeguard your keystore and its associated passwords carefu
 
 Just run the following command :
 ```bash
-flutter build appbundle
+flutter build appbundle --release
 ```
