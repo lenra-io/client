@@ -8,6 +8,7 @@ sudo apt-get install clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
 curl -fSLO https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip
 mkdir -p ~/Android/Sdk/cmdline-tools
 unzip commandlinetools-linux-6858069_latest.zip -d ~/Android/Sdk/cmdline-tools
+rm commandlinetools-linux-6858069_latest.zip
 mv ~/Android/Sdk/cmdline-tools/cmdline-tools ~/Android/Sdk/cmdline-tools/latest
 echo 'export ANDROID_HOME=$HOME/Android/Sdk' >> ~/.bashrc
 echo 'export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin' >> ~/.bashrc
@@ -39,7 +40,7 @@ Create a file named `/android/key.properties` that contains a reference to your 
 storePassword=<password from previous step>
 keyPassword=<password from previous step>
 keyAlias=key
-storeFile=/home/<username>/key.jks>
+storeFile=/home/<username>/key.jks
 ```
 
 Make sure to add `key.properties` to your `.gitignore` file to prevent it from being committed to your version control system.
@@ -84,3 +85,5 @@ Just run the following command :
 ```bash
 flutter build appbundle --release --no-tree-shake-icons --dart-define=LENRA_SERVER_URL=https://api.lenra.io/ --build-name=1.0.0-beta.43 --build-number=20
 ```
+
+Don't forget to increment the build number and the version tag to match the tag on the github
