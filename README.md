@@ -18,10 +18,10 @@
 <br />
 <div align="center">
 
-<h3 align="center">Client Store</h3>
+<h3 align="center">Client</h3>
 
   <p align="center">
-    The Lenra Client Store in Flutter.
+    The Lenra Client in Flutter.
     <br />
     <br />
     <a href="https://github.com/lenra-io/client/issues">Report Bug</a>
@@ -31,7 +31,7 @@
 </div>
 
 <div style="text-align: justify">
-The Client Store repository is the main entrypoint of Lenra to access an application when not considering the <a href="https://github.com/lenra-io/dev-tools">devtools</a>. For the moment, you can only access an application by entering its link into your browser but the goal of this repository is to provide a Store of applications so that you could browse and find the applications you need. app.lenra.io is actually this repository running on our servers.
+The Client repository is the main entrypoint of Lenra to access an application when not considering the <a href="https://github.com/lenra-io/dev-tools">devtools</a>. For the moment, you can only access an application by entering its link into your browser but the goal of this repository is to provide a launcher of applications so that you could browse and find the applications you need. app.lenra.io is actually this repository running on our servers.
 </div>
 
 <!-- GETTING STARTED -->

@@ -1,11 +1,11 @@
+import 'package:client/models/navigation_model.dart';
+import 'package:client/navigation/url_strategy/url_strategy.dart' show setUrlStrategyTo;
 import 'package:client_common/config/config.dart';
 import 'package:client_common/models/auth_model.dart';
 import 'package:client_common/models/build_model.dart';
 import 'package:client_common/models/cgu_model.dart';
 import 'package:client_common/models/store_model.dart';
 import 'package:client_common/models/user_application_model.dart';
-import 'package:client_store/models/navigation_model.dart';
-import 'package:client_store/navigation/url_strategy/url_strategy.dart' show setUrlStrategyTo;
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lenra_components/theme/lenra_color_theme_data.dart';

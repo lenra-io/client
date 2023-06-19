@@ -1,7 +1,7 @@
+import 'package:client/navigation/store_navigator.dart';
 import 'package:client_common/api/response_models/app_response.dart';
 import 'package:client_common/models/user_application_model.dart';
 import 'package:client_common/navigator/common_navigator.dart';
-import 'package:client_store/navigation/store_navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:lenra_components/component/lenra_text.dart';
 import 'package:lenra_components/lenra_components.dart';

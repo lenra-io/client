@@ -1,9 +1,9 @@
+import 'package:client/views/app_page.dart';
+import 'package:client/views/home_page.dart';
+import 'package:client/views/invitation/invitation_page.dart';
+import 'package:client/views/profile_page/profile_page.dart';
 import 'package:client_common/navigator/common_navigator.dart';
 import 'package:client_common/navigator/guard.dart';
-import 'package:client_store/views/app_page.dart';
-import 'package:client_store/views/home_page.dart';
-import 'package:client_store/views/invitation/invitation_page.dart';
-import 'package:client_store/views/profile_page/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 

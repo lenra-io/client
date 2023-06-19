@@ -5,10 +5,10 @@
 // 'flutter create' template.
 
 // The application's name. By default this is also the title of the Flutter window.
-PRODUCT_NAME = client_store
+PRODUCT_NAME = client
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = io.lenra.clientStore
+PRODUCT_BUNDLE_IDENTIFIER = io.lenra.client
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2022 io.lenra. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2023 io.lenra. All rights reserved.

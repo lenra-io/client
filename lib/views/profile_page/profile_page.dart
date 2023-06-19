@@ -1,8 +1,8 @@
+import 'package:client/navigation/store_navigator.dart';
 import 'package:client_common/models/auth_model.dart';
 import 'package:client_common/navigator/common_navigator.dart';
 import 'package:client_common/views/profile/change_password_form.dart';
 import 'package:client_common/views/simple_page.dart';
-import 'package:client_store/navigation/store_navigator.dart';
 import 'package:flutter/material.dart';
 import 'package:lenra_components/lenra_components.dart';
 import 'package:provider/provider.dart';
