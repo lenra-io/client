@@ -13,4 +13,5 @@ jobs:
     uses: lenra-io/github-actions/.github/workflows/deploy-flutter.yml@8-task-publish-to-the-playstore
     with:
       package-name: io.lenra.client
+      flutter-version: 3.7.x
 
