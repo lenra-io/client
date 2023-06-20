@@ -1,0 +1,16 @@
+name: Release
+on:
+  push:
+    branches:
+      - main
+      - rc
+      - beta
+      - alpha
+      - "*.x"
+
+jobs:
+  release:
+    uses: lenra-io/github-actions/.github/workflows/deploy-flutter.yml@8-task-publish-to-the-playstore
+    with:
+      package-name: io.lenra.client
+
