@@ -11,11 +11,15 @@ on:
 jobs:
   get-version:
     uses: lenra-io/github-actions/.github/workflows/get-version.yml@8-task-publish-to-the-playstore
+    permissions:
+      contents: read
   get-build-number:
     uses: lenra-io/github-actions/.github/workflows/increment-variable.yml@8-task-publish-to-the-playstore
     with:
       variable-name: BUILD_NUMBER
       dry-run: true
+    permissions:
+      actions: read
   build:
     needs: [get-version, get-build-number]
     uses: lenra-io/github-actions/.github/workflows/build-flutter.yml@8-task-publish-to-the-playstore
@@ -23,14 +27,22 @@ jobs:
       version: ${{ needs.get-version.outputs.version }}
       build: ${{ needs.get-build-number.outputs.build-number }}
       flutter-version: 3.7.x
+    permissions:
+      contents: write
+      actions: read
   release:
     needs: build
     uses: lenra-io/github-actions/.github/workflows/release-flutter.yml@8-task-publish-to-the-playstore
     with:
       package-name: io.lenra.client
-      flutter-version: 3.7.x
+      version: ${{ needs.get-version.outputs.version }}
+      build: ${{ needs.get-build-number.outputs.build-number }}
+    permissions:
+      contents: write
   increment-build-number:
     needs: release
     uses: lenra-io/github-actions/.github/workflows/increment-variable.yml@8-task-publish-to-the-playstore
     with:
       variable-name: BUILD_NUMBER
+    permissions:
+      contents: write
