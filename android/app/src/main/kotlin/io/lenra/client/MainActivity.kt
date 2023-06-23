@@ -1,4 +1,4 @@
-package io.lenra.client_store
+package io.lenra.client
 
 import io.flutter.embedding.android.FlutterActivity
 

@@ -1,8 +1,8 @@
+import 'package:client/navigation/store_navigator.dart';
+import 'package:client/views/store_page/app_button.dart';
 import 'package:client_common/models/store_model.dart';
 import 'package:client_common/navigator/common_navigator.dart';
 import 'package:client_common/views/error.dart';
-import 'package:client_store/navigation/store_navigator.dart';
-import 'package:client_store/views/store_page/app_button.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
