@@ -6,6 +6,7 @@ import 'package:client_common/models/build_model.dart';
 import 'package:client_common/models/cgu_model.dart';
 import 'package:client_common/models/store_model.dart';
 import 'package:client_common/models/user_application_model.dart';
+import 'package:client_common/oauth/oauth_model.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lenra_components/theme/lenra_color_theme_data.dart';
@@ -53,6 +54,7 @@ class Store extends StatelessWidget {
     var themeData = LenraThemeData();
     return MultiProvider(
       providers: [
+        ChangeNotifierProvider<OAuthModel>(create: (context) => OAuthModel()),
         ChangeNotifierProvider<AuthModel>(create: (context) => AuthModel()),
         ChangeNotifierProvider<BuildModel>(create: (context) => BuildModel()),
         ChangeNotifierProvider<StoreModel>(create: (context) => StoreModel()),
