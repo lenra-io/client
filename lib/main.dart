@@ -54,7 +54,13 @@ class Store extends StatelessWidget {
     var themeData = LenraThemeData();
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider<OAuthModel>(create: (context) => OAuthModel()),
+        ChangeNotifierProvider<OAuthModel>(
+          create: (context) => OAuthModel(
+            'dd0288dd-12b1-467f-8c0c-c23c72a91aa3',
+            'http://localhost:10000/redirect.html',
+            scopes: ['resources', 'manage:account', 'store'],
+          ),
+        ),
         ChangeNotifierProvider<AuthModel>(create: (context) => AuthModel()),
         ChangeNotifierProvider<BuildModel>(create: (context) => BuildModel()),
         ChangeNotifierProvider<StoreModel>(create: (context) => StoreModel()),

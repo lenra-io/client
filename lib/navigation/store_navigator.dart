@@ -13,8 +13,6 @@ class StoreNavigator extends CommonNavigator {
     path: "app/:appName:path(\\/?.*)",
     redirect: (context, state) => Guard.guards(context, [
       Guard.checkAuthenticated,
-      Guard.checkCguAccepted,
-      Guard.checkIsUser,
     ]),
     pageBuilder: (context, state) => NoTransitionPage(
       key: state.pageKey,
@@ -32,8 +30,6 @@ class StoreNavigator extends CommonNavigator {
     path: "app/invitations/:uuid",
     redirect: (context, state) => Guard.guards(context, [
       Guard.checkAuthenticated,
-      Guard.checkCguAccepted,
-      Guard.checkIsUser,
     ]),
     pageBuilder: (context, state) => NoTransitionPage(
       child: SafeArea(
@@ -49,8 +45,6 @@ class StoreNavigator extends CommonNavigator {
     path: "profile",
     redirect: (context, state) => Guard.guards(context, [
       Guard.checkAuthenticated,
-      Guard.checkCguAccepted,
-      Guard.checkIsUser,
     ]),
     pageBuilder: (context, state) => ScaleTopRightTransitionPage(
       child: const SafeArea(
@@ -64,8 +58,6 @@ class StoreNavigator extends CommonNavigator {
       path: "/",
       redirect: (context, state) => Guard.guards(context, [
             Guard.checkAuthenticated,
-            Guard.checkCguAccepted,
-            Guard.checkIsUser,
           ]),
       pageBuilder: (context, state) => NoTransitionPage(
             child: const SafeArea(
