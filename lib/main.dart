@@ -3,7 +3,6 @@ import 'package:client/navigation/url_strategy/url_strategy.dart' show setUrlStr
 import 'package:client_common/config/config.dart';
 import 'package:client_common/models/auth_model.dart';
 import 'package:client_common/models/build_model.dart';
-import 'package:client_common/models/cgu_model.dart';
 import 'package:client_common/models/store_model.dart';
 import 'package:client_common/models/user_application_model.dart';
 import 'package:client_common/oauth/oauth_model.dart';
@@ -56,7 +55,7 @@ class Store extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<OAuthModel>(
           create: (context) => OAuthModel(
-            'dd0288dd-12b1-467f-8c0c-c23c72a91aa3',
+            'f73475fa-73f6-4849-bc11-bfb5926afdbd',
             'http://localhost:10000/redirect.html',
             scopes: ['resources', 'manage:account', 'store'],
           ),
@@ -64,7 +63,6 @@ class Store extends StatelessWidget {
         ChangeNotifierProvider<AuthModel>(create: (context) => AuthModel()),
         ChangeNotifierProvider<BuildModel>(create: (context) => BuildModel()),
         ChangeNotifierProvider<StoreModel>(create: (context) => StoreModel()),
-        ChangeNotifierProvider<CguModel>(create: (context) => CguModel()),
         ChangeNotifierProvider<UserApplicationModel>(create: (context) => UserApplicationModel()),
         ChangeNotifierProvider<NavigationModel>(create: (context) => NavigationModel())
       ],
