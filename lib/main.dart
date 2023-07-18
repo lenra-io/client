@@ -6,6 +6,7 @@ import 'package:client_common/models/build_model.dart';
 import 'package:client_common/models/store_model.dart';
 import 'package:client_common/models/user_application_model.dart';
 import 'package:client_common/oauth/oauth_model.dart';
+import 'package:client_common/views/auth/oauth_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lenra_components/theme/lenra_color_theme_data.dart';
@@ -55,7 +56,7 @@ class Store extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<OAuthModel>(
           create: (context) => OAuthModel(
-            'f73475fa-73f6-4849-bc11-bfb5926afdbd',
+            '2c8584c0-cbc4-41ac-8ce5-24d42a9a171a',
             'http://localhost:10000/redirect.html',
             scopes: ['resources', 'manage:account', 'store'],
           ),
@@ -76,6 +77,9 @@ class Store extends StatelessWidget {
             textTheme: TextTheme(bodyMedium: themeData.lenraTextThemeData.bodyText),
             scaffoldBackgroundColor: LenraColorThemeData.lenraWhite,
           ),
+          builder: (context, widget) {
+            return OAuthPage(child: widget!);
+          },
         ),
       ),
     );

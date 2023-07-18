@@ -3,7 +3,6 @@ import 'package:client/views/home_page.dart';
 import 'package:client/views/invitation/invitation_page.dart';
 import 'package:client/views/profile_page/profile_page.dart';
 import 'package:client_common/navigator/common_navigator.dart';
-import 'package:client_common/navigator/guard.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -11,9 +10,6 @@ class StoreNavigator extends CommonNavigator {
   static GoRoute app = GoRoute(
     name: "app",
     path: "app/:appName:path(\\/?.*)",
-    redirect: (context, state) => Guard.guards(context, [
-      Guard.checkAuthenticated,
-    ]),
     pageBuilder: (context, state) => NoTransitionPage(
       key: state.pageKey,
       child: SafeArea(
@@ -28,9 +24,6 @@ class StoreNavigator extends CommonNavigator {
   static GoRoute appInvitation = GoRoute(
     name: "app-invitation",
     path: "app/invitations/:uuid",
-    redirect: (context, state) => Guard.guards(context, [
-      Guard.checkAuthenticated,
-    ]),
     pageBuilder: (context, state) => NoTransitionPage(
       child: SafeArea(
         child: InvitationPage(
@@ -43,9 +36,6 @@ class StoreNavigator extends CommonNavigator {
   static GoRoute profile = GoRoute(
     name: "profile",
     path: "profile",
-    redirect: (context, state) => Guard.guards(context, [
-      Guard.checkAuthenticated,
-    ]),
     pageBuilder: (context, state) => ScaleTopRightTransitionPage(
       child: const SafeArea(
         child: ProfilePage(),
@@ -56,9 +46,6 @@ class StoreNavigator extends CommonNavigator {
   static GoRoute home = GoRoute(
       name: "home",
       path: "/",
-      redirect: (context, state) => Guard.guards(context, [
-            Guard.checkAuthenticated,
-          ]),
       pageBuilder: (context, state) => NoTransitionPage(
             child: const SafeArea(
               child: HomePage(),
