@@ -42,7 +42,7 @@
                 <action android:name="android.intent.action.VIEW" />
                 <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.BROWSABLE" />
-                <data android:scheme="http" /> <!-- This must correspond to the custom scheme
+                <data android:scheme="io.lenra.app" /> <!-- This must correspond to the custom scheme
                 used for instantiatng the client... See below -->
             </intent-filter>
         </activity>
