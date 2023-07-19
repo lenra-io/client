@@ -56,8 +56,8 @@ class Store extends StatelessWidget {
       providers: [
         ChangeNotifierProvider<OAuthModel>(
           create: (context) => OAuthModel(
-            'eea9e87d-7a9a-4b8f-91c9-e8691fe61896',
-            '${const String.fromEnvironment("OAUTH_REDIRECT_BASE_URL", defaultValue: "io.lenra.app:/oauth2redirect")}',
+            'fe9fbd99-a673-4684-a8b6-315b436cfe6b',
+            const String.fromEnvironment("OAUTH_REDIRECT_URL", defaultValue: "http://localhost:10000/redirect.html"),
             scopes: ['resources', 'manage:account', 'store'],
           ),
         ),
