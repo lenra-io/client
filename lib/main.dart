@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:client/models/navigation_model.dart';
 import 'package:client/navigation/url_strategy/url_strategy.dart' show setUrlStrategyTo;
 import 'package:client_common/config/config.dart';
@@ -38,10 +40,22 @@ void main() async {
     await SentryFlutter.init(
       (options) => options
         ..dsn = sentryDsn
-        ..environment = environment,
+        ..environment = environment
+        ..beforeSend = (event, {hint}) {
+          return event;
+        },
       appRunner: () => runApp(const Store()),
     );
   } else {
+    var baseFlutterOnError = FlutterError.onError;
+    FlutterError.onError = (details) {
+      baseFlutterOnError?.call(details);
+    };
+    var basePlatformDispatcherOnError = PlatformDispatcher.instance.onError;
+    PlatformDispatcher.instance.onError = (error, stack) {
+      if (basePlatformDispatcherOnError != null) return basePlatformDispatcherOnError!.call(error, stack);
+      return false;
+    };
     runApp(const Store());
   }
 }
@@ -52,34 +66,38 @@ class Store extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     var themeData = LenraThemeData();
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider<OAuthModel>(
-          create: (context) => OAuthModel(
-            'fe9fbd99-a673-4684-a8b6-315b436cfe6b',
-            const String.fromEnvironment("OAUTH_REDIRECT_URL", defaultValue: "http://localhost:10000/redirect.html"),
-            scopes: ['resources', 'manage:account', 'store'],
+
+    return Container(
+      color: Colors.white,
+      child: MultiProvider(
+        providers: [
+          ChangeNotifierProvider<OAuthModel>(
+            create: (context) => OAuthModel(
+              '6629e477-dd4e-4cdd-a3c2-563cb80bae01',
+              const String.fromEnvironment("OAUTH_REDIRECT_URL", defaultValue: "http://localhost:10000/redirect.html"),
+              scopes: ['resources', 'manage:account', 'store'],
+            ),
           ),
-        ),
-        ChangeNotifierProvider<AuthModel>(create: (context) => AuthModel()),
-        ChangeNotifierProvider<BuildModel>(create: (context) => BuildModel()),
-        ChangeNotifierProvider<StoreModel>(create: (context) => StoreModel()),
-        ChangeNotifierProvider<UserApplicationModel>(create: (context) => UserApplicationModel()),
-        ChangeNotifierProvider<NavigationModel>(create: (context) => NavigationModel())
-      ],
-      builder: (BuildContext context, _) => LenraTheme(
-        themeData: themeData,
-        child: MaterialApp.router(
-          routerConfig: context.select<NavigationModel, GoRouter>((model) => model.router),
-          title: 'Lenra',
-          theme: ThemeData(
-            visualDensity: VisualDensity.standard,
-            textTheme: TextTheme(bodyMedium: themeData.lenraTextThemeData.bodyText),
-            scaffoldBackgroundColor: LenraColorThemeData.lenraWhite,
+          ChangeNotifierProvider<AuthModel>(create: (context) => AuthModel()),
+          ChangeNotifierProvider<BuildModel>(create: (context) => BuildModel()),
+          ChangeNotifierProvider<StoreModel>(create: (context) => StoreModel()),
+          ChangeNotifierProvider<UserApplicationModel>(create: (context) => UserApplicationModel()),
+          ChangeNotifierProvider<NavigationModel>(create: (context) => NavigationModel())
+        ],
+        builder: (BuildContext context, _) => LenraTheme(
+          themeData: themeData,
+          child: MaterialApp.router(
+            routerConfig: context.select<NavigationModel, GoRouter>((model) => model.router),
+            title: 'Lenra',
+            theme: ThemeData(
+              visualDensity: VisualDensity.standard,
+              textTheme: TextTheme(bodyMedium: themeData.lenraTextThemeData.bodyText),
+              scaffoldBackgroundColor: LenraColorThemeData.lenraWhite,
+            ),
+            builder: (context, widget) {
+              return OAuthPage(child: widget!);
+            },
           ),
-          builder: (context, widget) {
-            return OAuthPage(child: widget!);
-          },
         ),
       ),
     );
