@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:client/models/navigation_model.dart';
 import 'package:client/navigation/url_strategy/url_strategy.dart' show setUrlStrategyTo;
 import 'package:client_common/config/config.dart';
@@ -35,27 +33,37 @@ void main() async {
   // TODO: Récupération de variables d'environnement ne doit pas marcher
   const environment = String.fromEnvironment('ENVIRONMENT');
 
+  String sentryDsn = Config.instance.sentryDsn;
+
+  // SentryOptions options = SentryOptions();
+  // options.dsn = sentryDsn;
+  // options.environment = environment;
+
+  // CatcherOptions debugOptions = CatcherOptions(
+  //   SilentReportMode(),
+  //   [
+  //     SentryHandler(
+  //       SentryClient(SentryOptions(dsn: sentryDsn)..environment = environment),
+  //       customEnvironment: environment,
+  //     ),
+  //   ],
+  // );
+
+  // GlobalKey<NavigatorState> key = GlobalKey();
+  // Catcher(
+  //   navigatorKey: key,
+  //   debugConfig: debugOptions,
+  //   rootWidget: const Store(),
+  // );
+
   if (environment == "production" || environment == "staging") {
-    String sentryDsn = Config.instance.sentryDsn;
     await SentryFlutter.init(
       (options) => options
         ..dsn = sentryDsn
-        ..environment = environment
-        ..beforeSend = (event, {hint}) {
-          return event;
-        },
+        ..environment = environment,
       appRunner: () => runApp(const Store()),
     );
   } else {
-    var baseFlutterOnError = FlutterError.onError;
-    FlutterError.onError = (details) {
-      baseFlutterOnError?.call(details);
-    };
-    var basePlatformDispatcherOnError = PlatformDispatcher.instance.onError;
-    PlatformDispatcher.instance.onError = (error, stack) {
-      if (basePlatformDispatcherOnError != null) return basePlatformDispatcherOnError!.call(error, stack);
-      return false;
-    };
     runApp(const Store());
   }
 }
@@ -73,7 +81,7 @@ class Store extends StatelessWidget {
         providers: [
           ChangeNotifierProvider<OAuthModel>(
             create: (context) => OAuthModel(
-              '6629e477-dd4e-4cdd-a3c2-563cb80bae01',
+              'ad67254d-7e62-42b2-8b73-24e458677415',
               const String.fromEnvironment("OAUTH_REDIRECT_URL", defaultValue: "http://localhost:10000/redirect.html"),
               scopes: ['resources', 'manage:account', 'store'],
             ),
