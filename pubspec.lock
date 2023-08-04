@@ -90,7 +90,7 @@ packages:
     source: hosted
     version: "4.2.1"
   catcher:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: catcher
       sha256: c65c2fe4045196a0e0b02afc1b423c562fab4db8fa37428eae23d135a6106de2
