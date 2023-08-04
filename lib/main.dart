@@ -1,7 +1,6 @@
 import 'package:catcher/catcher.dart';
 import 'package:client/models/navigation_model.dart';
 import 'package:client/navigation/url_strategy/url_strategy.dart' show setUrlStrategyTo;
-import 'package:client/views/lenra_report_mode.dart';
 import 'package:client_common/config/config.dart';
 import 'package:client_common/models/auth_model.dart';
 import 'package:client_common/models/build_model.dart';
@@ -9,6 +8,7 @@ import 'package:client_common/models/store_model.dart';
 import 'package:client_common/models/user_application_model.dart';
 import 'package:client_common/oauth/oauth_model.dart';
 import 'package:client_common/views/auth/oauth_page.dart';
+import 'package:client_common/views/lenra_report_mode.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lenra_components/theme/lenra_color_theme_data.dart';
