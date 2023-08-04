@@ -1,3 +1,4 @@
+import 'package:catcher/catcher.dart';
 import 'package:client/navigation/store_navigator.dart';
 import 'package:client_common/navigator/common_navigator.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ class NavigationModel extends ChangeNotifier {
   late List<RouteBase> appRoutes = [];
 
   late GoRouter router = GoRouter(
+    navigatorKey: Catcher.navigatorKey,
     routes: [
       CommonNavigator.authRoutes,
       // Onboarding & other pages

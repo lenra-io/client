@@ -54,14 +54,6 @@ class StoreNavigator extends CommonNavigator {
       routes: [profile, appInvitation, app]);
 
   static String buildAppRoute(String appName) => "/app/$appName";
-
-  static final GoRouter router = GoRouter(
-    routes: [
-      CommonNavigator.authRoutes,
-      // Onboarding & other pages
-      home,
-    ],
-  );
 }
 
 class ScaleTopRightTransitionPage extends CustomTransitionPage {
