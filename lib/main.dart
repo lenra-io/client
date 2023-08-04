@@ -1,6 +1,7 @@
 import 'package:catcher/catcher.dart';
 import 'package:client/models/navigation_model.dart';
 import 'package:client/navigation/url_strategy/url_strategy.dart' show setUrlStrategyTo;
+import 'package:client/views/lenra_report_mode.dart';
 import 'package:client_common/config/config.dart';
 import 'package:client_common/models/auth_model.dart';
 import 'package:client_common/models/build_model.dart';
@@ -35,7 +36,7 @@ void main() async {
   const environment = String.fromEnvironment('ENVIRONMENT');
 
   CatcherOptions debugOptions = CatcherOptions(
-    DialogReportMode(),
+    LenraReportMode(),
     environment == "production" || environment == "staging"
         ? [
             SentryHandler(
