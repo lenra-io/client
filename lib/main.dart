@@ -31,8 +31,7 @@ void main() async {
   });
 
   debugPrint("Starting main app[debugPrint]: ${Config.instance.application}");
-  // ignore: todo
-  // TODO: Récupération de variables d'environnement ne doit pas marcher
+
   const environment = String.fromEnvironment('ENVIRONMENT');
 
   CatcherOptions debugOptions = CatcherOptions(
@@ -65,7 +64,7 @@ class Store extends StatelessWidget {
         providers: [
           ChangeNotifierProvider<OAuthModel>(
             create: (context) => OAuthModel(
-              'bf8c0800-6172-4816-8957-37684680361d',
+              '139d06de-7d96-4880-a9c5-d3d1c4373829',
               const String.fromEnvironment("OAUTH_REDIRECT_URL", defaultValue: "http://localhost:10000/redirect.html"),
               scopes: ['resources', 'manage:account', 'store'],
             ),
