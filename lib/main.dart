@@ -91,7 +91,7 @@ class ErrorHandler extends StatelessWidget {
                       onPressed: () {
                         streamController.add(null);
                       },
-                      child: Text("Retry"),
+                      child: const Text("Retry"),
                     ),
                   ],
                 ),
