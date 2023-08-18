@@ -3,6 +3,7 @@ import 'package:client/views/home_page.dart';
 import 'package:client/views/invitation/invitation_page.dart';
 import 'package:client/views/profile_page/profile_page.dart';
 import 'package:client_common/navigator/common_navigator.dart';
+import 'package:client_common/navigator/guard.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -50,6 +51,13 @@ class StoreNavigator extends CommonNavigator {
             child: const SafeArea(
               child: HomePage(),
             ),
+          ),
+      redirect: (context, state) => Guard.guards(
+            context,
+            [
+              Guard.checkIsAuthenticated,
+            ],
+            metadata: {"initialRoute": state.location},
           ),
       routes: [profile, appInvitation, app]);
 

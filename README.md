@@ -48,7 +48,7 @@ The Client repository is the main entrypoint of Lenra to access an application w
 
 Run flutter app with chrome
 ```sh
-flutter run -d chrome --web-port 10000 --dart-define=LENRA_SERVER_URL=http://localhost:4000
+flutter run -d chrome --web-port 10000 --dart-define=LENRA_SERVER_URL=http://localhost:4000 --dart-define=OAUTH_CLIENT_ID=<your_client_id>
 ```
 
 Run flutter test
