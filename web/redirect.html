@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+</head>
+
+<body>
+    <script>
+        window.onload = function () {
+            window.opener.postMessage(window.location.href, "http://localhost:10000");
+        }
+    </script>
+</body>
+
+</html>
