@@ -100,7 +100,7 @@ jobs:
           flutter-version: ${{ env.flutter_version }}
       - name: Build Flutter Web
         run: |
-          flutter build web
+          flutter build web --no-tree-shake-icons
           cd ..
       - name: Setup Node.js
         uses: actions/setup-node@v2
