@@ -134,8 +134,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "v1.0.0-alpha.1"
-      resolved-ref: e861c16762a32f835cc568a02678f1269ecf25ec
+      ref: "v1.0.0-alpha.2"
+      resolved-ref: "139a65af5a37056b299b90ddff49f31d885d4dab"
       url: "https://github.com/lenra-io/client-common.git"
     source: git
     version: "1.0.0"
@@ -471,8 +471,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: "v1.0.0-alpha.1"
-      resolved-ref: b1baf81724cfcea29e2e80e3cbd01814fbb2dc9c
+      ref: "v1.0.0-alpha.2"
+      resolved-ref: f98a70ae5b0099249060aaf2d61267d669ebf44d
       url: "https://github.com/lenra-io/lenra_ui_runner.git"
     source: git
     version: "0.0.0"

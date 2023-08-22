@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <!--
     If you are serving your web app in a path other than the root, change the
@@ -28,7 +29,7 @@
   <link rel="apple-touch-icon" href="icons/Icon-192.png">
 
   <!-- Favicon -->
-  <link rel="icon" type="image/png" href="favicon.png"/>
+  <link rel="icon" type="image/png" href="favicon.png" />
 
   <title>Lenra</title>
   <link rel="manifest" href="manifest.json">
@@ -37,6 +38,7 @@
 
   <meta name="lenra-server-url" content="${LENRA_SERVER_URL}">
   <meta name="sentry-client-dsn" content="${SENTRY_CLIENT_DSN}" />
+  <meta name="oauth-client-id" content="${OAUTH_CLIENT_ID}" />
 
   <script>
     const regex = /^(https?:\/\/[^/]+\/)#\/(.*)$/;
@@ -51,19 +53,20 @@
   <!-- This script adds the flutter initialization JS code -->
   <script src="flutter.js" defer></script>
 </head>
+
 <body>
   <svg width="40" height="40" version="1.1" xmlns="http://www.w3.org/2000/svg">
     <circle cx="20" cy="20" r="15" />
   </svg>
   <script>
-    window.addEventListener('load', function(ev) {
+    window.addEventListener('load', function (ev) {
       // Download main.dart.js
       _flutter.loader.loadEntrypoint({
         serviceWorker: {
           serviceWorkerVersion: serviceWorkerVersion,
         },
-        onEntrypointLoaded: function(engineInitializer) {
-          engineInitializer.initializeEngine().then(function(appRunner) {
+        onEntrypointLoaded: function (engineInitializer) {
+          engineInitializer.initializeEngine().then(function (appRunner) {
             appRunner.runApp();
           });
         }
@@ -71,4 +74,5 @@
     });
   </script>
 </body>
+
 </html>
