@@ -135,7 +135,7 @@ class Store extends StatelessWidget {
         providers: [
           ChangeNotifierProvider<OAuthModel>(
             create: (context) => OAuthModel(
-              const String.fromEnvironment('OAUTH_CLIENT_ID'),
+              Config.instance.oauthClientId,
               const String.fromEnvironment("OAUTH_REDIRECT_URL", defaultValue: "http://localhost:10000/redirect.html"),
               scopes: ['resources', 'manage:account', 'store'],
             ),
