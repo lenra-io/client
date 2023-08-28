@@ -32,6 +32,8 @@ dependencies:
     git:
       url: https://github.com/ThexXTURBOXx/catcher.git
       ref: ae44d0bbce00c3801629b65f60783d15184a7f8f
+  oauth2_client: ^3.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter

@@ -557,7 +557,7 @@ packages:
     source: hosted
     version: "1.0.0"
   oauth2_client:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: oauth2_client
       sha256: "7d53b2a9eec4c1cbfddfd0a69dd0b6e8db73e6f75e4fb910c8070ac6513ae544"

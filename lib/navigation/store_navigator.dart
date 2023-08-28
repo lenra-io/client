@@ -1,6 +1,8 @@
+import 'package:client/navigation/guard.dart';
 import 'package:client/views/app_page.dart';
 import 'package:client/views/home_page.dart';
 import 'package:client/views/invitation/invitation_page.dart';
+import 'package:client/views/oauth_page.dart';
 import 'package:client/views/profile_page/profile_page.dart';
 import 'package:client_common/navigator/common_navigator.dart';
 import 'package:client_common/navigator/guard.dart';
@@ -8,6 +10,12 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class StoreNavigator extends CommonNavigator {
+  static GoRoute oauth = GoRoute(
+    name: "oauth",
+    path: "/oauth",
+    builder: (ctx, state) => const SafeArea(child: OAuthPage()),
+  );
+
   static GoRoute app = GoRoute(
     name: "app",
     path: "app/:appName:path(\\/?.*)",
@@ -55,7 +63,7 @@ class StoreNavigator extends CommonNavigator {
       redirect: (context, state) => Guard.guards(
             context,
             [
-              Guard.checkIsAuthenticated,
+              ClientGuard.checkIsAuthenticated,
             ],
             metadata: {"initialRoute": state.location},
           ),
