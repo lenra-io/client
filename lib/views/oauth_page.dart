@@ -1,3 +1,5 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:client_common/api/lenra_http_client.dart';
 import 'package:client_common/api/response_models/user_response.dart';
 import 'package:client_common/api/user_api.dart';
@@ -43,7 +45,7 @@ class OAuthPageState extends State<OAuthPage> {
             ),
           );
         } else {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
       }),
     );
