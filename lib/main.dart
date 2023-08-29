@@ -137,7 +137,7 @@ class Store extends StatelessWidget {
             create: (context) => OAuthModel(
               Config.instance.oauthClientId,
               Config.instance.oauthRedirectUrl,
-              scopes: ['resources', 'manage:account', 'store'],
+              scopes: ['profile', 'store', 'resources', 'manage:account'],
             ),
           ),
           ChangeNotifierProvider<AuthModel>(create: (context) => AuthModel()),
