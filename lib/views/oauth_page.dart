@@ -35,11 +35,9 @@ class OAuthPageState extends State<OAuthPage> {
   @override
   Widget build(BuildContext context) {
     redirectTo = context.read<OAuthModel>().beforeRedirectPath;
-    print("redirectTo $redirectTo");
     RegExp regExp = RegExp(r"\/app\/([a-fA-F0-9-]{36})");
     final match = regExp.firstMatch(redirectTo ?? "/");
     appServiceName = match?.group(1);
-    print("appServiceName $appServiceName");
 
     return FutureBuilder<bool>(
       future: isAuthenticated(context),
