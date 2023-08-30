@@ -34,44 +34,45 @@ jobs:
       new-release-published: ${{ steps.get-next-version.outputs.new-release-published }}
       new-release-version: ${{ steps.get-next-version.outputs.new-release-version }}
 
-  android_build:
-    name: Android Build
-    needs: [get-next-version]
-    runs-on: ubuntu-latest
-    env:
-      VERSION: ${{ needs.get-next-version.outputs.new-release-version }}
-    timeout-minutes: 10
-    if: ${{ needs.get-next-version.outputs.new-release-published }}
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - uses: webfactory/ssh-agent@v0.5.3
-        with:
-          ssh-private-key: |
-            ${{ secrets.LENRA_UI_RUNNER_SSH }}
-            ${{ secrets.LENRA_COMPONENTS_SSH }}
-            ${{ secrets.CLIENT_COMMON_SSH }}
-            ${{ secrets.CLIENT_APP_SSH }}
-      - name: Install Flutter & Dependencies
-        uses: subosito/flutter-action@v1.5.3
-        with:
-          flutter-version: ${{ env.flutter_version }}
-      - name: Setup yq
-        id: setup-yq
-        uses: shiipou/setup-yq-action@stable
-      - name: Update pubspec version
-        run: yq -i ".version = \"${{ env.VERSION }}\"" pubspec.yaml
-      - name: Flutter Build APK
-        run: flutter build apk --no-tree-shake-icons --dart-define=LENRA_SERVER_URL=https://api.lenra.io
-      - name: Upload APK artifact
-        uses: actions/upload-artifact@v2
-        with:
-          name: app-release
-          path: build/app/outputs/flutter-apk/app-release.apk
+  # android_build:
+  #   name: Android Build
+  #   needs: [get-next-version]
+  #   runs-on: ubuntu-latest
+  #   env:
+  #     VERSION: ${{ needs.get-next-version.outputs.new-release-version }}
+  #   timeout-minutes: 10
+  #   if: ${{ needs.get-next-version.outputs.new-release-published }}
+  #   steps:
+  #     - name: Checkout
+  #       uses: actions/checkout@v2
+  #     - uses: webfactory/ssh-agent@v0.5.3
+  #       with:
+  #         ssh-private-key: |
+  #           ${{ secrets.LENRA_UI_RUNNER_SSH }}
+  #           ${{ secrets.LENRA_COMPONENTS_SSH }}
+  #           ${{ secrets.CLIENT_COMMON_SSH }}
+  #           ${{ secrets.CLIENT_APP_SSH }}
+  #     - name: Install Flutter & Dependencies
+  #       uses: subosito/flutter-action@v1.5.3
+  #       with:
+  #         flutter-version: ${{ env.flutter_version }}
+  #     - name: Setup yq
+  #       id: setup-yq
+  #       uses: shiipou/setup-yq-action@stable
+  #     - name: Update pubspec version
+  #       run: yq -i ".version = \"${{ env.VERSION }}\"" pubspec.yaml
+  #     - name: Flutter Build APK
+  #       run: flutter build apk --no-tree-shake-icons --dart-define=LENRA_SERVER_URL=https://api.lenra.io
+  #     - name: Upload APK artifact
+  #       uses: actions/upload-artifact@v2
+  #       with:
+  #         name: app-release
+  #         path: build/app/outputs/flutter-apk/app-release.apk
 
   release:
     name: Release
-    needs: [android_build]
+    # needs: [android_build]
+    needs: [get-next-version]
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
@@ -99,7 +100,7 @@ jobs:
           flutter-version: ${{ env.flutter_version }}
       - name: Build Flutter Web
         run: |
-          flutter build web
+          flutter build web --no-tree-shake-icons
           cd ..
       - name: Setup Node.js
         uses: actions/setup-node@v2

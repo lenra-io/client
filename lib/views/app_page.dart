@@ -21,20 +21,20 @@ class AppPage extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProxyProvider<AuthModel, SocketModel>(
-          create: (context) => AppSocketModel(context.read<AuthModel>().accessToken ?? "", appName),
+          create: (context) => AppSocketModel(context.read<AuthModel>().accessToken?.accessToken ?? "", appName),
           update: (_, authModel, socketModel) {
             if (socketModel == null) {
-              return AppSocketModel(authModel.accessToken ?? "", appName);
+              return AppSocketModel(authModel.accessToken?.accessToken ?? "", appName);
             }
 
-            (socketModel as AppSocketModel).update(authModel.accessToken ?? "");
+            (socketModel as AppSocketModel).update(authModel.accessToken?.accessToken ?? "");
             return socketModel;
           },
         ),
       ],
       builder: (BuildContext context, _) => App(
         appName: appName,
-        accessToken: context.watch<AuthModel>().accessToken ?? "",
+        accessToken: context.watch<AuthModel>().accessToken?.accessToken ?? "",
         httpEndpoint: Config.instance.httpEndpoint,
         wsEndpoint: Config.instance.wsEndpoint,
         baseRoute: "/app/$appName",
