@@ -11,8 +11,8 @@ class NavigationModel extends ChangeNotifier {
     navigatorKey: Catcher.navigatorKey,
     routes: [
       // Onboarding & other pages
-      StoreNavigator.home,
       StoreNavigator.oauth,
+      StoreNavigator.home,
       ...appRoutes,
     ],
   );
