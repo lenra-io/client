@@ -111,18 +111,14 @@ Widget build(BuildContext context) {
         ),
         LenraButton(
           leftIcon: const Icon(Icons.logout),
-          onPressed: () =&gt; context.read&lt;AuthModel&gt;().logout(),
+          onPressed: () async {
+            await context.read&lt;OAuthModel&gt;().helper.disconnect();
+            &#47;&#47; ignore: use_build_context_synchronously
+            context.go(&quot;&#47;&quot;);
+          },
           type: LenraComponentType.tertiary,
           text: &quot;Disconnect&quot;,
         )
-        &#47;&#47; TextButton(
-        &#47;&#47;     style: const ButtonStyle(
-        &#47;&#47;       backgroundColor: MaterialStatePropertyAll(Colors.red),
-        &#47;&#47;     ),
-        &#47;&#47;     onPressed: () {
-        &#47;&#47;       print(&quot;DELETE ACCOUNT&quot;);
-        &#47;&#47;     },
-        &#47;&#47;     child: const Text(&quot;Delete Account&quot;, style: TextStyle(color: Colors.white)))
       ],
     ),
   );

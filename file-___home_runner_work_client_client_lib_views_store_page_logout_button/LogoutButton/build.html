@@ -80,10 +80,11 @@
   <pre class="language-dart"><code class="language-dart">@override
 Widget build(BuildContext context) {
   return ElevatedButton(
-    onPressed: () =&gt; context.read&lt;AuthModel&gt;().logout().catchError((error) {
-      logger.warning(error);
-      return error;
-    }),
+    onPressed: () async {
+      await context.read&lt;OAuthModel&gt;().helper.disconnect();
+      &#47;&#47; ignore: use_build_context_synchronously
+      context.go(&quot;&#47;&quot;);
+    },
     child: const Text(&#39;Logout&#39;),
   );
 }</code></pre>

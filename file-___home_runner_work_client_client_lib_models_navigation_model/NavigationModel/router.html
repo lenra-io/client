@@ -69,11 +69,12 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">late GoRouter router = GoRouter(
+  navigatorKey: Catcher.navigatorKey,
   routes: [
-    CommonNavigator.authRoutes,
     &#47;&#47; Onboarding &amp; other pages
+    StoreNavigator.oauth,
     StoreNavigator.home,
-    ...appRoutes
+    ...appRoutes,
   ],
 );</code></pre>
 </section>

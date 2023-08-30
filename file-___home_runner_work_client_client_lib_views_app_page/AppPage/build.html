@@ -82,20 +82,20 @@ Widget build(BuildContext context) {
   return MultiProvider(
     providers: [
       ChangeNotifierProxyProvider&lt;AuthModel, SocketModel&gt;(
-        create: (context) =&gt; AppSocketModel(context.read&lt;AuthModel&gt;().accessToken ?? &quot;&quot;, appName),
+        create: (context) =&gt; AppSocketModel(context.read&lt;AuthModel&gt;().accessToken?.accessToken ?? &quot;&quot;, appName),
         update: (_, authModel, socketModel) {
           if (socketModel == null) {
-            return AppSocketModel(authModel.accessToken ?? &quot;&quot;, appName);
+            return AppSocketModel(authModel.accessToken?.accessToken ?? &quot;&quot;, appName);
           }
 
-          (socketModel as AppSocketModel).update(authModel.accessToken ?? &quot;&quot;);
+          (socketModel as AppSocketModel).update(authModel.accessToken?.accessToken ?? &quot;&quot;);
           return socketModel;
         },
       ),
     ],
     builder: (BuildContext context, _) =&gt; App(
       appName: appName,
-      accessToken: context.watch&lt;AuthModel&gt;().accessToken ?? &quot;&quot;,
+      accessToken: context.watch&lt;AuthModel&gt;().accessToken?.accessToken ?? &quot;&quot;,
       httpEndpoint: Config.instance.httpEndpoint,
       wsEndpoint: Config.instance.wsEndpoint,
       baseRoute: &quot;&#47;app&#47;$appName&quot;,
