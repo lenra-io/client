@@ -147,7 +147,7 @@ class OAuthPageState extends State<OAuthPage> {
       return await authenticate(context);
     }
 
-    return oauthModel.accessToken != null;
+    return false;
   }
 
   static Future<bool> authenticate(BuildContext context) async {
