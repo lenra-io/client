@@ -34,8 +34,10 @@ void main() async {
   });
 
   debugPrint("Starting main app[debugPrint]: ${Config.instance.application}");
-
-  const environment = String.fromEnvironment('ENVIRONMENT');
+  // ignore: todo
+  // TODO: Récupération de variables d'environnement ne doit pas marcher
+  const environment =
+      Config.instance.environment.length == 0 ? String.fromEnvironment('ENVIRONMENT') : Config.instance.environment;
 
   var reportMode = LenraReportMode();
   CatcherOptions debugOptions = CatcherOptions(
