@@ -34,8 +34,6 @@ void main() async {
   });
 
   debugPrint("Starting main app[debugPrint]: ${Config.instance.application}");
-  // ignore: todo
-  // TODO: Récupération de variables d'environnement ne doit pas marcher
   String environment = Config.instance.environment;
 
   var reportMode = LenraReportMode();
