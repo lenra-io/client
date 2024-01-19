@@ -34,8 +34,7 @@ void main() async {
   });
 
   debugPrint("Starting main app[debugPrint]: ${Config.instance.application}");
-
-  const environment = String.fromEnvironment('ENVIRONMENT');
+  String environment = Config.instance.environment;
 
   var reportMode = LenraReportMode();
   CatcherOptions debugOptions = CatcherOptions(
