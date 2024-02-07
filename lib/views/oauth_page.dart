@@ -2,10 +2,10 @@
 
 import 'package:client_common/api/application_api.dart';
 import 'package:client_common/api/lenra_http_client.dart';
+import 'package:client_common/api/response_models/api_error.dart';
 import 'package:client_common/api/response_models/app_response.dart';
 import 'package:client_common/api/response_models/user_response.dart';
 import 'package:client_common/api/user_api.dart';
-import 'package:client_common/models/auth_model.dart';
 import 'package:client_common/oauth/oauth_model.dart';
 import 'package:client_common/views/simple_page.dart';
 import 'package:flutter/material.dart';
@@ -140,9 +140,7 @@ class OAuthPageState extends State<OAuthPage> {
   }
 
   static Future<bool> isAuthenticated(BuildContext context) async {
-    OAuthModel oauthModel = context.read<OAuthModel>();
-
-    AccessTokenResponse? token = await oauthModel.helper.getTokenFromStorage();
+    AccessTokenResponse? token = await context.read<OAuthModel>().helper.getTokenFromStorage();
     if (token?.accessToken != null) {
       return await authenticate(context);
     }
@@ -153,14 +151,20 @@ class OAuthPageState extends State<OAuthPage> {
   static Future<bool> authenticate(BuildContext context) async {
     AccessTokenResponse? response = await context.read<OAuthModel>().authenticate();
     if (response != null) {
-      context.read<AuthModel>().accessToken = response;
-
       // Set the token for the global API instance
       LenraApi.instance.token = response.accessToken;
 
-      if (context.read<AuthModel>().user == null) {
-        UserResponse user = await UserApi.me();
-        context.read<AuthModel>().user = user.user;
+      if (context.read<OAuthModel>().user == null) {
+        try {
+          UserResponse resp = await UserApi.me();
+          context.read<OAuthModel>().user = resp.user;
+        } on ApiError catch (e) {
+          if (e.reason == 'invalid_token') {
+            // Delete access token from storage
+            await context.read<OAuthModel>().helper.removeAllTokens();
+            return false;
+          }
+        }
       }
 
       return true;

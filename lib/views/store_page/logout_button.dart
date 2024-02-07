@@ -13,7 +13,7 @@ class LogoutButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () async {
-        await context.read<OAuthModel>().helper.disconnect();
+        await context.read<OAuthModel>().logout();
         // ignore: use_build_context_synchronously
         context.go("/oauth");
       },

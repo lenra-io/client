@@ -5,7 +5,6 @@ import 'package:client/models/navigation_model.dart';
 import 'package:client/navigation/url_strategy/url_strategy.dart' show setUrlStrategyTo;
 import 'package:client_common/api/response_models/api_error.dart';
 import 'package:client_common/config/config.dart';
-import 'package:client_common/models/auth_model.dart';
 import 'package:client_common/models/build_model.dart';
 import 'package:client_common/models/store_model.dart';
 import 'package:client_common/models/user_application_model.dart';
@@ -139,7 +138,6 @@ class Store extends StatelessWidget {
               scopes: ['profile', 'store', 'resources', 'manage:account', 'app:websocket'],
             ),
           ),
-          ChangeNotifierProvider<AuthModel>(create: (context) => AuthModel()),
           ChangeNotifierProvider<BuildModel>(create: (context) => BuildModel()),
           ChangeNotifierProvider<StoreModel>(create: (context) => StoreModel()),
           ChangeNotifierProvider<UserApplicationModel>(create: (context) => UserApplicationModel()),
