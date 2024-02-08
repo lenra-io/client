@@ -8,7 +8,7 @@ void setUrlStrategyTo(String strategyName) {
       strategy = const HashUrlStrategy();
       break;
     case 'path':
-      strategy = PathUrlStrategy();
+      strategy = const PathUrlStrategy();
       break;
     default:
       throw Exception('Unknown URL strategy: $strategyName');
