@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:catcher/catcher.dart';
 import 'package:client/models/navigation_model.dart';
+import 'package:client/models/token_model.dart';
 import 'package:client/navigation/url_strategy/url_strategy.dart' show setUrlStrategyTo;
 import 'package:client_common/api/response_models/api_error.dart';
 import 'package:client_common/config/config.dart';
@@ -141,7 +142,8 @@ class Store extends StatelessWidget {
           ChangeNotifierProvider<BuildModel>(create: (context) => BuildModel()),
           ChangeNotifierProvider<StoreModel>(create: (context) => StoreModel()),
           ChangeNotifierProvider<UserApplicationModel>(create: (context) => UserApplicationModel()),
-          ChangeNotifierProvider<NavigationModel>(create: (context) => NavigationModel())
+          ChangeNotifierProvider<NavigationModel>(create: (context) => NavigationModel()),
+          ChangeNotifierProvider<TokenModel>(create: (context) => TokenModel()),
         ],
         builder: (BuildContext context, _) => LenraTheme(
           themeData: themeData,

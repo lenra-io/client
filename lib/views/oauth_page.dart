@@ -1,5 +1,6 @@
 // ignore_for_file: use_build_context_synchronously
 
+import 'package:client/models/token_model.dart';
 import 'package:client_common/api/application_api.dart';
 import 'package:client_common/api/lenra_http_client.dart';
 import 'package:client_common/api/response_models/api_error.dart';
@@ -153,6 +154,7 @@ class OAuthPageState extends State<OAuthPage> {
     if (response != null) {
       // Set the token for the global API instance
       LenraApi.instance.token = response.accessToken;
+      context.read<TokenModel>().accessToken = response.accessToken;
 
       if (context.read<OAuthModel>().user == null) {
         try {
