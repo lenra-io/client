@@ -15,7 +15,7 @@ class LogoutButton extends StatelessWidget {
       onPressed: () async {
         await context.read<OAuthModel>().logout();
         // ignore: use_build_context_synchronously
-        context.go("/oauth");
+        context.go("/");
       },
       child: const Text('Logout'),
     );
