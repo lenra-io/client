@@ -1,6 +1,6 @@
+import 'package:client/models/token_model.dart';
 import 'package:client/navigation/store_navigator.dart';
 import 'package:client_common/config/config.dart';
-import 'package:client_common/models/auth_model.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:lenra_ui_runner/app.dart';
@@ -20,21 +20,21 @@ class AppPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProxyProvider<AuthModel, SocketModel>(
-          create: (context) => AppSocketModel(context.read<AuthModel>().accessToken?.accessToken ?? "", appName),
-          update: (_, authModel, socketModel) {
+        ChangeNotifierProxyProvider<TokenModel, SocketModel>(
+          create: (context) => AppSocketModel(context.read<TokenModel>().accessToken ?? "", appName),
+          update: (_, tokenModel, socketModel) {
             if (socketModel == null) {
-              return AppSocketModel(authModel.accessToken?.accessToken ?? "", appName);
+              return AppSocketModel(tokenModel.accessToken ?? "", appName);
             }
 
-            (socketModel as AppSocketModel).update(authModel.accessToken?.accessToken ?? "");
+            (socketModel as AppSocketModel).update(tokenModel.accessToken ?? "");
             return socketModel;
           },
         ),
       ],
       builder: (BuildContext context, _) => App(
         appName: appName,
-        accessToken: context.watch<AuthModel>().accessToken?.accessToken ?? "",
+        accessToken: context.watch<TokenModel>().accessToken ?? "",
         httpEndpoint: Config.instance.httpEndpoint,
         wsEndpoint: Config.instance.wsEndpoint,
         baseRoute: "/app/$appName",

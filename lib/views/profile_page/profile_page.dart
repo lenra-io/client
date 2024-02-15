@@ -1,5 +1,4 @@
 import 'package:client/navigation/store_navigator.dart';
-import 'package:client_common/models/auth_model.dart';
 import 'package:client_common/navigator/common_navigator.dart';
 import 'package:client_common/oauth/oauth_model.dart';
 import 'package:client_common/views/profile/change_password_form.dart';
@@ -28,7 +27,7 @@ class ProfilePage extends StatelessWidget {
             height: 8,
           ),
           Text(
-            context.read<AuthModel>().user?.email ?? "",
+            context.read<OAuthModel>().user?.email ?? "",
           ),
         ],
       ),
@@ -47,7 +46,7 @@ class ProfilePage extends StatelessWidget {
           LenraButton(
             leftIcon: const Icon(Icons.logout),
             onPressed: () async {
-              await context.read<OAuthModel>().helper.disconnect();
+              await context.read<OAuthModel>().logout();
               // ignore: use_build_context_synchronously
               context.go("/");
             },
