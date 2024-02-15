@@ -75,14 +75,21 @@
   <pre class="language-dart"><code class="language-dart">static Future&lt;bool&gt; authenticate(BuildContext context) async {
   AccessTokenResponse? response = await context.read&lt;OAuthModel&gt;().authenticate();
   if (response != null) {
-    context.read&lt;AuthModel&gt;().accessToken = response;
-
     &#47;&#47; Set the token for the global API instance
     LenraApi.instance.token = response.accessToken;
+    context.read&lt;TokenModel&gt;().accessToken = response.accessToken;
 
-    if (context.read&lt;AuthModel&gt;().user == null) {
-      UserResponse user = await UserApi.me();
-      context.read&lt;AuthModel&gt;().user = user.user;
+    if (context.read&lt;OAuthModel&gt;().user == null) {
+      try {
+        UserResponse resp = await UserApi.me();
+        context.read&lt;OAuthModel&gt;().user = resp.user;
+      } on ApiError catch (e) {
+        if (e.reason == &#39;invalid_token&#39;) {
+          &#47;&#47; Delete access token from storage
+          await context.read&lt;OAuthModel&gt;().helper.removeAllTokens();
+          return false;
+        }
+      }
     }
 
     return true;

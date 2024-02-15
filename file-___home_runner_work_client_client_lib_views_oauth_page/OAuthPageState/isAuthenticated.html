@@ -73,14 +73,12 @@
 <section class="summary source-code" id="source">
   <h2><span>Implementation</span></h2>
   <pre class="language-dart"><code class="language-dart">static Future&lt;bool&gt; isAuthenticated(BuildContext context) async {
-  OAuthModel oauthModel = context.read&lt;OAuthModel&gt;();
-
-  AccessTokenResponse? token = await oauthModel.helper.getTokenFromStorage();
+  AccessTokenResponse? token = await context.read&lt;OAuthModel&gt;().helper.getTokenFromStorage();
   if (token?.accessToken != null) {
     return await authenticate(context);
   }
 
-  return oauthModel.accessToken != null;
+  return false;
 }</code></pre>
 </section>
 

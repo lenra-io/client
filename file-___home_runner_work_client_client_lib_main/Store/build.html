@@ -92,11 +92,11 @@ Widget build(BuildContext context) {
             scopes: [&#39;profile&#39;, &#39;store&#39;, &#39;resources&#39;, &#39;manage:account&#39;, &#39;app:websocket&#39;],
           ),
         ),
-        ChangeNotifierProvider&lt;AuthModel&gt;(create: (context) =&gt; AuthModel()),
         ChangeNotifierProvider&lt;BuildModel&gt;(create: (context) =&gt; BuildModel()),
         ChangeNotifierProvider&lt;StoreModel&gt;(create: (context) =&gt; StoreModel()),
         ChangeNotifierProvider&lt;UserApplicationModel&gt;(create: (context) =&gt; UserApplicationModel()),
-        ChangeNotifierProvider&lt;NavigationModel&gt;(create: (context) =&gt; NavigationModel())
+        ChangeNotifierProvider&lt;NavigationModel&gt;(create: (context) =&gt; NavigationModel()),
+        ChangeNotifierProvider&lt;TokenModel&gt;(create: (context) =&gt; TokenModel()),
       ],
       builder: (BuildContext context, _) =&gt; LenraTheme(
         themeData: themeData,
